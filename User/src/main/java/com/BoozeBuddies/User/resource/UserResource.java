@@ -2,6 +2,8 @@ package com.BoozeBuddies.User.resource;
 
 import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
+
 @RestController
 @RequestMapping(value = "api/public/user")
 public class UserResource {
@@ -17,14 +19,16 @@ public class UserResource {
         return null;
     }
 
-    @PutMapping(value = "/updateUsername")
-    com.BoozeBuddies.User.model.User UpdateUsername(){
-        return null;
+    @PutMapping(value = "/UpdateUsername")
+    User UpdateUsername(User user)
+    {
+        return UserResource.UpdateUsername(user);
     }
 
     @PostMapping(value = "/addUser")
-    com.BoozeBuddies.User.model.User AddUser(){
-        return null;
+    User AddUser(User user)
+    {
+        return UserResource.AddUser(user);
     }
 
     @DeleteMapping(value = "/deleteUser")
