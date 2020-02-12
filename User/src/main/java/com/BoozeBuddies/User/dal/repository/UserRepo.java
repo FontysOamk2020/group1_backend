@@ -1,7 +1,7 @@
 package com.BoozeBuddies.User.dal.repository;
 
 import com.BoozeBuddies.User.interfaces.IUserContext;
-import com.BoozeBuddies.User.models.User;
+import com.BoozeBuddies.User.model.User;
 
 import java.util.List;
 
