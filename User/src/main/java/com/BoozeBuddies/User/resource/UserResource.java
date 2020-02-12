@@ -7,8 +7,9 @@ import org.springframework.web.bind.annotation.*;
 public class UserResource {
 
     @GetMapping(value = "/getUserByUserId/{id}")
-    com.BoozeBuddies.User.model.User GetUserByUserId(@PathVariable("id")int id){
-        return null;
+    User GetUserByUserId(@PathVariable("id")int id)
+    {
+
     }
 
     @GetMapping(value = "/getUserByEmail/{email}")
