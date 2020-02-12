@@ -1,4 +1,4 @@
-package com.BoozeBuddies.User.Resources;
+package com.BoozeBuddies.User.resources;
 
 import com.BoozeBuddies.User.Models.User;
 import org.springframework.web.bind.annotation.*;
