@@ -35,11 +35,6 @@ public class UserContextHibernate implements IUserContext {
     }
 
     @Override
-    public void deleteUser(User user) {
-
-    }
-
-    @Override
     public List<User> getAllUsers() {
         return null;
     }
@@ -52,5 +47,16 @@ public class UserContextHibernate implements IUserContext {
     @Override
     public User getUserByEmail(String email) {
         return null;
+    }
+
+
+    @Override
+    public User updateUsername(User user, String username) {
+        return null;
+    }
+
+    @Override
+    public boolean deleteUser(User user) {
+        return false;
     }
 }

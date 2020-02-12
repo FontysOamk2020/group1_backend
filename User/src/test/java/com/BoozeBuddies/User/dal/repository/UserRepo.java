@@ -17,8 +17,14 @@ public class UserRepo implements IUserContext {
     }
 
     @Override
-    public void deleteUser(User user) {
+    public User updateUsername(User user, String username) {
+        return null;
+    }
+
+    @Override
+    public boolean deleteUser(User user) {
         context.deleteUser(user);
+        return true;
     }
 
     @Override

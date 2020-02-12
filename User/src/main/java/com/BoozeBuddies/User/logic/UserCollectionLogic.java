@@ -2,7 +2,6 @@ package com.BoozeBuddies.User.logic;
 
 import com.BoozeBuddies.User.factory.UserFactory;
 import com.BoozeBuddies.User.interfaces.IUserCollectionRepo;
-import jdk.internal.jline.internal.Nullable;
 import com.BoozeBuddies.User.model.User;
 
 import java.util.List;
@@ -11,7 +10,7 @@ public class UserCollectionLogic {
     private UserFactory userFactory = new UserFactory();
     private IUserCollectionRepo userCollectionRepo = userFactory.createUserCollectionRepo();
 
-    public UserCollectionLogic( @Nullable IUserCollectionRepo repo)
+    public UserCollectionLogic(IUserCollectionRepo repo)
     {
         userCollectionRepo = ((repo == null) ? userFactory.createUserCollectionRepo() : repo);
     }
