@@ -1,5 +1,7 @@
 package com.BoozeBuddies.User.resource;
 
+import com.BoozeBuddies.User.dal.repository.UserRepo;
+import com.BoozeBuddies.User.logic.UserLogic;
 import com.BoozeBuddies.User.model.User;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,28 +14,30 @@ public class UserResource {
     @GetMapping(value = "/getUserByUserId/{id}")
     User GetUserByUserId(@PathVariable("id")int id)
     {
-
+        return UserLogic.GetUserById(id);
     }
 
     @GetMapping(value = "/getUserByEmail/{email}")
-    User GetUserByUserEmail(@PathVariable("email")String email){
-        return null;
+    User GetUserByEmail(@PathVariable("email")String email)
+    {
+        return UserLogic.GetUserByEmail(email);
     }
 
     @PutMapping(value = "/UpdateUsername")
     User UpdateUsername(User user)
     {
-        return UserResource.UpdateUsername(user);
+        return UserLogic.UpdateUsername(user);
     }
 
     @PostMapping(value = "/addUser")
     User AddUser(User user)
     {
-        return UserResource.AddUser(user);
+        return UserLogic.AddUser(user);
     }
 
     @DeleteMapping(value = "/deleteUser")
-    User DeleteUser(){
-        return null;
+    User DeleteUser(User user)
+    {
+        return UserLogic.DeleteUser(user);
     }
 }
