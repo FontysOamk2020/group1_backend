@@ -14,5 +14,11 @@ public class UserLogic {
         userRepo = ((repo == null) ? userFactory.createUserRepo() : repo);
     }
 
+    public User updateUsername(User user, String username) {
+        return userRepo.updateUsername(user, username);
+    }
+
+    public boolean deleteUser(User user) { return userRepo.deleteUser(user); }
+
     public void logout(User user) {}
 }

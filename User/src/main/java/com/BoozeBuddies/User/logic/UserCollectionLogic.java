@@ -18,8 +18,6 @@ public class UserCollectionLogic {
 
     public User addUser(User user) { return userCollectionRepo.addUser(user); }
 
-    public void deleteUser(User user) { userCollectionRepo.deleteUser(user); }
-
     public List<User> getAllUsers() { return userCollectionRepo.getAllUsers(); }
 
     public User getUserById(int id) { return userCollectionRepo.getUserById(id); }

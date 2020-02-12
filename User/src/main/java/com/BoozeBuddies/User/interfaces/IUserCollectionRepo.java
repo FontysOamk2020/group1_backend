@@ -7,8 +7,6 @@ import java.util.List;
 public interface IUserCollectionRepo {
     User addUser(User user);
 
-    void deleteUser(User user);
-
     List<User> getAllUsers();
 
     User getUserById(int id);
