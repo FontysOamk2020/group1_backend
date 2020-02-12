@@ -1,4 +1,4 @@
-package com.BoozeBuddies.User.logic;
+package com.BoozeBuddies.User.Logic;
 
 public class UserCollectionLogic {
 }

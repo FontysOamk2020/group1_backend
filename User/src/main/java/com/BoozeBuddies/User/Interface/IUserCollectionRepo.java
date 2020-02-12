@@ -1,4 +1,4 @@
-package com.BoozeBuddies.User.interfaces;
+package com.BoozeBuddies.User.Interface;
 
 public interface IUserCollectionRepo {
 }
