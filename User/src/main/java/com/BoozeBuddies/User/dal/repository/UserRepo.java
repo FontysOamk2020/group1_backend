@@ -35,4 +35,9 @@ public class UserRepo implements IUserContext {
     public User getUserByEmail(String email) {
         return context.getUserByEmail(email);
     }
+
+    @Override
+    public boolean updateUsername(User user, String username) {
+        return context.updateUsername(user, username);
+    }
 }
