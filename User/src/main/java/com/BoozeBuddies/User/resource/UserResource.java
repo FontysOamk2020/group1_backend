@@ -1,6 +1,5 @@
 package com.BoozeBuddies.User.resource;
 
-import com.BoozeBuddies.User.model.User;
 import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
@@ -16,7 +15,7 @@ public class UserResource {
     }
 
     @GetMapping(value = "/getUserByEmail/{email}")
-    User GetUserByUserEmail(@PathVariable("email")String email){
+    com.BoozeBuddies.User.model.User GetUserByUserEmail(@PathVariable("email")String email){
         return null;
     }
 
@@ -33,7 +32,7 @@ public class UserResource {
     }
 
     @DeleteMapping(value = "/deleteUser")
-    User DeleteUser(){
+    com.BoozeBuddies.User.model.User DeleteUser(){
         return null;
     }
 }

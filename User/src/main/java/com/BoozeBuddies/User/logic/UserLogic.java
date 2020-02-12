@@ -2,7 +2,7 @@ package com.BoozeBuddies.User.logic;
 
 import com.BoozeBuddies.User.factory.UserFactory;
 import com.BoozeBuddies.User.interfaces.IUserRepo;
-import com.BoozeBuddies.User.models.User;
+import com.BoozeBuddies.User.model.User;
 
 public class UserLogic {
     private UserFactory userFactory = new UserFactory();
@@ -15,5 +15,5 @@ public class UserLogic {
 
     public void logout(User user) {}
 
-    public void updateUsername(User user, String password) { userRepo.updateUsername(password, user); }
+    public void updateUsername(User user, String password) { userRepo.updateUsername(user, password); }
 }
