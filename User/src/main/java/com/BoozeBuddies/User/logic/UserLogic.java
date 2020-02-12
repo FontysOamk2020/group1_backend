@@ -3,7 +3,7 @@ package com.BoozeBuddies.User.logic;
 import com.BoozeBuddies.User.factory.UserFactory;
 import com.BoozeBuddies.User.interfaces.IUserRepo;
 import com.BoozeBuddies.User.model.User;
-import com.BoozeBuddies.User.models.User;
+
 
 public class UserLogic {
     private UserFactory userFactory = new UserFactory();
