@@ -28,9 +28,9 @@ public class UserResource {
     }
 
     @PutMapping(value = "/UpdateUsername")
-    User UpdateUsername(User user)
+    User UpdateUsername(User user, String username)
     {
-        return userLogic.updateUsername(user);
+        return userLogic.updateUsername(user, username);
     }
 
     @PostMapping(value = "/addUser")
@@ -42,6 +42,6 @@ public class UserResource {
     @DeleteMapping(value = "/deleteUser")
     boolean DeleteUser(User user)
     {
-         return userCollectionLogic.deleteUser(user);
+         return userLogic.deleteUser(user);
     }
 }

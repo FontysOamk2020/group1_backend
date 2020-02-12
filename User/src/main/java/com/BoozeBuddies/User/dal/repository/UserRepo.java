@@ -17,8 +17,8 @@ public class UserRepo implements IUserContext {
     }
 
     @Override
-    public void deleteUser(User user) {
-        context.deleteUser(user);
+    public boolean deleteUser(User user) {
+        return context.deleteUser(user);
     }
 
     @Override
@@ -37,7 +37,7 @@ public class UserRepo implements IUserContext {
     }
 
     @Override
-    public boolean updateUsername(User user, String username) {
+    public User updateUsername(User user, String username) {
         return context.updateUsername(user, username);
     }
 }
