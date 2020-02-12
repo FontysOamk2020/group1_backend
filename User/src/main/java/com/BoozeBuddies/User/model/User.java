@@ -1,4 +1,4 @@
-package com.BoozeBuddies.User.models;
+package com.BoozeBuddies.User.model;
 
 public class User {
 }
