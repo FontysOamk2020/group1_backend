@@ -3,7 +3,7 @@ package com.BoozeBuddies.User.logic;
 import com.BoozeBuddies.User.factory.UserFactory;
 import com.BoozeBuddies.User.interfaces.IUserCollectionRepo;
 import jdk.internal.jline.internal.Nullable;
-import com.BoozeBuddies.User.model.User;
+import com.BoozeBuddies.User.models.User;
 
 import java.util.List;
 

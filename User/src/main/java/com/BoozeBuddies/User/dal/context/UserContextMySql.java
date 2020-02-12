@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.List;
 
 public class UserContextMySql implements IUserContext {
     private String sqlUrl;
@@ -18,6 +19,26 @@ public class UserContextMySql implements IUserContext {
         this.sqlUrl = "jdbc:mysql://217.101.44.31/OuluDB";
         this.usernameUrl = "root";
         this.passwordUrl = getPassword();
+    }
+
+    @Override
+    public User addUser(User user) {
+        return null;
+    }
+
+    @Override
+    public void deleteUser(User user) {
+
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return null;
+    }
+
+    @Override
+    public User getUserById(int id) {
+        return null;
     }
 
     // Methods
