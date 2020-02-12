@@ -15,5 +15,5 @@ public class UserLogic {
 
     public void logout(User user) {}
 
-    public void updateUsername(User user, String password) { userRepo.updateUsername(password, user); }
+    public void updateUsername(User user, String password) { userRepo.updateUsername(user, password); }
 }
