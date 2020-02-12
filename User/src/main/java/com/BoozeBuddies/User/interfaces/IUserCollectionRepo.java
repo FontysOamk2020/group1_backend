@@ -1,6 +1,6 @@
 package com.BoozeBuddies.User.interfaces;
 
-import com.BoozeBuddies.User.models.User;
+import com.BoozeBuddies.User.model.User;
 
 import java.util.List;
 

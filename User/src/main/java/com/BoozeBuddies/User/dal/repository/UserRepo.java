@@ -1,7 +1,7 @@
 package com.BoozeBuddies.User.dal.repository;
 
 import com.BoozeBuddies.User.interfaces.IUserContext;
-import com.BoozeBuddies.User.models.User;
+import com.BoozeBuddies.User.model.User;
 
 import java.util.List;
 
@@ -34,10 +34,5 @@ public class UserRepo implements IUserContext {
     @Override
     public User getUserByEmail(String email) {
         return context.getUserByEmail(email);
-    }
-
-    @Override
-    public void updateUsername(User user, String password) {
-        context.updateUsername(user, password);
     }
 }
