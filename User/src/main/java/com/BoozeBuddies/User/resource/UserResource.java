@@ -27,7 +27,7 @@ public class UserResource {
         return userCollectionLogic.getUserByEmail(email);
     }
 
-    @PutMapping(value = "/UpdateUsername")
+    @PutMapping(value = "/updateUsername")
     User UpdateUsername(User user)
     {
         return userLogic.updateUsername(user);
