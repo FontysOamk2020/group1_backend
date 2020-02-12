@@ -3,7 +3,7 @@ package com.BoozeBuddies.User.logic;
 import com.BoozeBuddies.User.factory.UserFactory;
 import com.BoozeBuddies.User.interfaces.IUserCollectionRepo;
 import jdk.internal.jline.internal.Nullable;
-import com.BoozeBuddies.User.models.User;
+import com.BoozeBuddies.User.model.User;
 
 import java.util.List;
 
@@ -16,9 +16,9 @@ public class UserCollectionLogic {
         userCollectionRepo = ((repo == null) ? userFactory.createUserCollectionRepo() : repo);
     }
 
-    public User AddUser(User user) { return userCollectionRepo.AddUser(user); }
+    public User addUser(User user) { return userCollectionRepo.addUser(user); }
 
-    public void deleteUser(User user) { userCollectionRepo.removeUser(user); }
+    public void deleteUser(User user) { userCollectionRepo.deleteUser(user); }
 
     public List<User> getAllUsers() { return userCollectionRepo.getAllUsers(); }
 
