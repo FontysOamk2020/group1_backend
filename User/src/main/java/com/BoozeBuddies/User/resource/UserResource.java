@@ -1,6 +1,5 @@
-package com.BoozeBuddies.User.resources;
-
-import com.BoozeBuddies.User.model.User;
+package com.BoozeBuddies.User.resource;
+import com.BoozeBuddies.User.models.User;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
