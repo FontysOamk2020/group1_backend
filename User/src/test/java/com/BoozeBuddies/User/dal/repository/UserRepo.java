@@ -3,6 +3,7 @@ package com.BoozeBuddies.User.dal.repository;
 import com.BoozeBuddies.User.interfaces.IUserContext;
 import com.BoozeBuddies.User.model.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserRepo implements IUserContext {
@@ -28,7 +29,7 @@ public class UserRepo implements IUserContext {
     }
 
     @Override
-    public List<User> getAllUsers() {
+    public ArrayList<User> getAllUsers() {
         return context.getAllUsers();
     }
 

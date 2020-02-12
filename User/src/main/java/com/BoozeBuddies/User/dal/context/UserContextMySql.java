@@ -1,12 +1,14 @@
 package com.BoozeBuddies.User.dal.context;
 
 import com.BoozeBuddies.User.interfaces.IUserContext;
+import com.BoozeBuddies.User.model.UpdateUser;
 import com.BoozeBuddies.User.model.User;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserContextMySql implements IUserContext {
@@ -27,7 +29,7 @@ public class UserContextMySql implements IUserContext {
     }
 
     @Override
-    public User updateUsername(User user, String username) {
+    public User updateUsername(UpdateUser updateUser) {
         return null;
     }
 
@@ -38,7 +40,7 @@ public class UserContextMySql implements IUserContext {
 
 
     @Override
-    public List<User> getAllUsers() {
+    public ArrayList<User> getAllUsers() {
         return null;
     }
 

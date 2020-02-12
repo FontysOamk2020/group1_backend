@@ -1,12 +1,9 @@
 package com.BoozeBuddies.User.Dal.Context;
 
 import com.BoozeBuddies.User.interfaces.IUserContext;
+import com.BoozeBuddies.User.model.UpdateUser;
 import com.BoozeBuddies.User.model.User;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.*;
 import java.util.List;
 
 public class UserContextHibernate implements IUserContext {
@@ -31,32 +28,118 @@ public class UserContextHibernate implements IUserContext {
         finally {
             entityManager.close();
         }
-        return null;
+        return user;
     }
 
     @Override
     public List<User> getAllUsers() {
-        return null;
+        EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
+        EntityTransaction entityTransaction = null;
+        String hql = "FROM User";
+        TypedQuery<User> typedQuery = entityManager.createQuery(hql, User.class);
+        List<User> users = null;
+        try {
+         users = typedQuery.getResultList();
+
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        finally {
+            entityManager.close();
+        }
+        return users;
     }
 
     @Override
     public User getUserById(int id) {
-        return null;
+        EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
+        EntityTransaction entityTransaction = null;
+        String hql = "SELECT c FROM User c WHERE c.id = :userID";
+        TypedQuery<User> typedQuery = entityManager.createQuery(hql, User.class);
+        typedQuery.setParameter("userID", id);
+        User user = null;
+        try {
+            user = typedQuery.getSingleResult();
+
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        finally {
+            entityManager.close();
+        }
+        return user;
     }
 
     @Override
     public User getUserByEmail(String email) {
-        return null;
+        EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
+        EntityTransaction entityTransaction = null;
+        String hql = "SELECT c FROM User c WHERE c.email = :userEMAIL";
+        TypedQuery<User> typedQuery = entityManager.createQuery(hql, User.class);
+        typedQuery.setParameter("userEMAIL", email);
+        User user = null;
+        try {
+            user = typedQuery.getSingleResult();
+
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        finally {
+            entityManager.close();
+        }
+        return user;
     }
 
 
     @Override
-    public User updateUsername(User user, String username) {
-        return null;
+    public User updateUsername(UpdateUser updateUser) {
+        EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
+        EntityTransaction entityTransaction = null;
+        User returnUser = null;
+        try {
+            entityTransaction = entityManager.getTransaction();
+            entityTransaction.begin();
+
+            returnUser = entityManager.find(User.class, updateUser.getId());
+            returnUser.setName(updateUser.getNewUsername());
+
+            entityManager.persist(returnUser);
+            entityTransaction.commit();
+        }catch (Exception ex){
+            if(entityTransaction != null){
+                entityTransaction.rollback();
+            }
+            ex.printStackTrace();
+        }
+        finally {
+            entityManager.close();
+        }
+        return returnUser;
     }
 
     @Override
     public boolean deleteUser(User user) {
-        return false;
+        EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
+        EntityTransaction entityTransaction = null;
+        User returnUser = null;
+        try {
+            entityTransaction = entityManager.getTransaction();
+            entityTransaction.begin();
+
+            returnUser = entityManager.find(User.class, user.getId());
+            entityManager.remove(returnUser);
+
+            entityTransaction.commit();
+        }catch (Exception ex){
+            if(entityTransaction != null){
+                entityTransaction.rollback();
+            }
+            ex.printStackTrace();
+            return false;
+        }
+        finally {
+            entityManager.close();
+        };
+        return true;
     }
 }

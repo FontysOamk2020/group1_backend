@@ -2,6 +2,7 @@ package com.BoozeBuddies.User.logic;
 
 import com.BoozeBuddies.User.factory.UserFactory;
 import com.BoozeBuddies.User.interfaces.IUserRepo;
+import com.BoozeBuddies.User.model.UpdateUser;
 import com.BoozeBuddies.User.model.User;
 
 
@@ -14,8 +15,8 @@ public class UserLogic {
         userRepo = ((repo == null) ? userFactory.createUserRepo() : repo);
     }
 
-    public User updateUsername(User user, String username) {
-        return userRepo.updateUsername(user, username);
+    public User updateUsername(UpdateUser updateUser) {
+        return userRepo.updateUsername(updateUser);
     }
 
     public boolean deleteUser(User user) { return userRepo.deleteUser(user); }

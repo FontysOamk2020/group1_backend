@@ -4,6 +4,7 @@ import com.BoozeBuddies.User.factory.UserFactory;
 import com.BoozeBuddies.User.interfaces.IUserCollectionRepo;
 import com.BoozeBuddies.User.model.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserCollectionLogic {
