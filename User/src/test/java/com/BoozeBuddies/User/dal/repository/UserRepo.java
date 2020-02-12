@@ -1,6 +1,7 @@
 package com.BoozeBuddies.User.dal.repository;
 
 import com.BoozeBuddies.User.interfaces.IUserContext;
+import com.BoozeBuddies.User.model.UpdateUser;
 import com.BoozeBuddies.User.model.User;
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class UserRepo implements IUserContext {
     }
 
     @Override
-    public User updateUsername(User user, String username) {
+    public User updateUsername(UpdateUser updateUser) {
         return null;
     }
 
@@ -29,7 +30,7 @@ public class UserRepo implements IUserContext {
     }
 
     @Override
-    public ArrayList<User> getAllUsers() {
+    public List<User> getAllUsers() {
         return context.getAllUsers();
     }
 
