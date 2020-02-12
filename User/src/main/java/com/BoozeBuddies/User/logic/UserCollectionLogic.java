@@ -3,6 +3,7 @@ package com.BoozeBuddies.User.logic;
 import com.BoozeBuddies.User.factory.UserFactory;
 import com.BoozeBuddies.User.interfaces.IUserCollectionRepo;
 import com.BoozeBuddies.User.model.User;
+import org.springframework.lang.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,7 @@ public class UserCollectionLogic {
     private UserFactory userFactory = new UserFactory();
     private IUserCollectionRepo userCollectionRepo = userFactory.createUserCollectionRepo();
 
-    public UserCollectionLogic(IUserCollectionRepo repo)
+    public UserCollectionLogic( @Nullable IUserCollectionRepo repo)
     {
         userCollectionRepo = ((repo == null) ? userFactory.createUserCollectionRepo() : repo);
     }
