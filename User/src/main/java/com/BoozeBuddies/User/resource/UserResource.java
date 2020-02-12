@@ -1,6 +1,5 @@
-package com.BoozeBuddies.User.resources;
+package com.BoozeBuddies.User.resource;
 
-import com.BoozeBuddies.User.model.User;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -8,27 +7,27 @@ import org.springframework.web.bind.annotation.*;
 public class UserResource {
 
     @GetMapping(value = "/getUserByUserId/{id}")
-    User GetUserByUserId(@PathVariable("id")int id){
+    com.BoozeBuddies.User.model.User GetUserByUserId(@PathVariable("id")int id){
         return null;
     }
 
     @GetMapping(value = "/getUserByEmail/{email}")
-    User GetUserByUserEmail(@PathVariable("email")String email){
+    com.BoozeBuddies.User.model.User GetUserByUserEmail(@PathVariable("email")String email){
         return null;
     }
 
-    @PutMapping(value = "/UpdateUsername")
-    User UpdateUsername(){
+    @PutMapping(value = "/updateUsername")
+    com.BoozeBuddies.User.model.User UpdateUsername(){
         return null;
     }
 
     @PostMapping(value = "/addUser")
-    User AddUser(){
+    com.BoozeBuddies.User.model.User AddUser(){
         return null;
     }
 
     @DeleteMapping(value = "/deleteUser")
-    User DeleteUser(){
+    com.BoozeBuddies.User.model.User DeleteUser(){
         return null;
     }
 }
