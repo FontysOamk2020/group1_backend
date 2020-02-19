@@ -4,12 +4,13 @@
 
     <!-- Define a name used to get an entity manager. Define that you will
     complete transactions with the DB  -->
-    <persistence-unit name="OuluDB" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="Oulu" transaction-type="RESOURCE_LOCAL">
 
         <!-- Define the class for Hibernate which implements JPA -->
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <!-- Define the object that should be persisted in the database -->
         <class>com.BoozeBuddies.Friend.Models.User</class>
+        <class>com.BoozeBuddies.Friend.Models.Relationship</class>
         <properties>
             <!-- Driver for DB database -->
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />

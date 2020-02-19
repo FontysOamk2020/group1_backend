@@ -1,8 +1,9 @@
 package com.BoozeBuddies.Friend.Logic;
 import com.BoozeBuddies.Friend.Dal.Interfaces.IFriendCollectionRepo;
 import com.BoozeBuddies.Friend.Dal.Interfaces.IFriendRepo;
+import com.BoozeBuddies.Friend.Models.RelationshipCollection;
 import com.BoozeBuddies.Friend.factory.FriendFactory;
-import jdk.internal.jline.internal.Nullable;
+import org.springframework.lang.Nullable;
 
 
 public class FriendCollectionLogic {
@@ -14,4 +15,7 @@ public class FriendCollectionLogic {
         friendCollectionRepo = ((repo == null) ? friendFactory.createUserCollectionRepo() : repo);
     }
 
+    public RelationshipCollection getFriendsById(int id) {
+        return friendCollectionRepo.getFriendsById(id);
+    }
 }

@@ -1,8 +1,0 @@
-auth0:
-  audience: https://EternityWarsResourceServer
-spring:
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: https://dev-eternitywars.eu.auth0.com/

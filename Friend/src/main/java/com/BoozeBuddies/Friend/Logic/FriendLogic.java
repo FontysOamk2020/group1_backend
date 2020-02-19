@@ -2,7 +2,8 @@ package com.BoozeBuddies.Friend.Logic;
 
 import com.BoozeBuddies.Friend.Dal.Interfaces.IFriendCollectionRepo;
 import com.BoozeBuddies.Friend.factory.FriendFactory;
-import jdk.internal.jline.internal.Nullable;
+import org.springframework.lang.Nullable;
+
 
 public class FriendLogic {
     private FriendFactory friendFactory = new FriendFactory();

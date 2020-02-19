@@ -1,6 +1,8 @@
 package com.BoozeBuddies.User.dal.context;
 
+import com.BoozeBuddies.User.interfaces.IUserCollectionRepo;
 import com.BoozeBuddies.User.interfaces.IUserContext;
+import com.BoozeBuddies.User.interfaces.IUserRepo;
 import com.BoozeBuddies.User.model.UpdateUser;
 import com.BoozeBuddies.User.model.User;
 import javax.persistence.*;
