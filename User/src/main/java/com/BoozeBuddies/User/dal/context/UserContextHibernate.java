@@ -36,7 +36,6 @@ public class UserContextHibernate implements IUserContext {
     @Override
     public List<User> getAllUsers() {
         EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
-        EntityTransaction entityTransaction = null;
         String hql = "FROM User";
         TypedQuery<User> typedQuery = entityManager.createQuery(hql, User.class);
         List<User> users = null;
@@ -55,7 +54,6 @@ public class UserContextHibernate implements IUserContext {
     @Override
     public User getUserById(int id) {
         EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
-        EntityTransaction entityTransaction = null;
         String hql = "SELECT c FROM User c WHERE c.id = :userID";
         TypedQuery<User> typedQuery = entityManager.createQuery(hql, User.class);
         typedQuery.setParameter("userID", id);
@@ -75,7 +73,6 @@ public class UserContextHibernate implements IUserContext {
     @Override
     public User getUserByEmail(String email) {
         EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
-        EntityTransaction entityTransaction = null;
         String hql = "SELECT c FROM User c WHERE c.email = :userEMAIL";
         TypedQuery<User> typedQuery = entityManager.createQuery(hql, User.class);
         typedQuery.setParameter("userEMAIL", email);
