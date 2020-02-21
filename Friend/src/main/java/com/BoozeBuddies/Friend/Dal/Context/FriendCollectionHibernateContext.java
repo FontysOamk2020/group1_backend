@@ -1,8 +1,9 @@
 package com.BoozeBuddies.Friend.Dal.Context;
 
 import com.BoozeBuddies.Friend.Dal.Interfaces.IFriendRepositoryContext;
-import com.BoozeBuddies.Friend.Models.Relationship;
+import com.BoozeBuddies.Friend.Models.Friend;
 import com.BoozeBuddies.Friend.Models.RelationshipCollection;
+import com.BoozeBuddies.Friend.Models.User;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,24 +14,67 @@ public class FriendCollectionHibernateContext implements IFriendRepositoryContex
     private static EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence.createEntityManagerFactory("Oulu");
 
     @Override
-    public boolean AddRelationship(Relationship relationship) {
-        return false;
+    public boolean AddRelationship(Friend relationship) {
+        EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
+        EntityTransaction entityTransaction = null;
+        try {
+            entityTransaction = entityManager.getTransaction();
+            entityTransaction.begin();
+            entityManager.persist(relationship);
+            entityTransaction.commit();
+        }catch (Exception ex){
+            if(entityTransaction != null){
+                entityTransaction.rollback();
+            }
+            ex.printStackTrace();
+            return false;
+        }
+        finally {
+            entityManager.close();
+        }
+        return true;
     }
 
     @Override
-    public boolean DeleteRelationship(Relationship relationship) {
-        return false;
+    public boolean DeleteRelationship(Friend relationship) {
+        EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
+        EntityTransaction entityTransaction = null;
+        Friend returnRelationship = null;
+        try {
+            entityTransaction = entityManager.getTransaction();
+            entityTransaction.begin();
+
+            returnRelationship = entityManager.find(Friend.class, relationship.getId());
+            entityManager.remove(returnRelationship);
+
+            entityTransaction.commit();
+        }catch (Exception ex){
+            if(entityTransaction != null){
+                entityTransaction.rollback();
+            }
+            ex.printStackTrace();
+            return false;
+        }
+        finally {
+            entityManager.close();
+        };
+        return true;
     }
 
     @Override
     public RelationshipCollection getFriendsById(int id) {
+        User user = new User();
+        user.setId(id);
+
         EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
-        EntityTransaction entityTransaction = null;
-        String hql = "FROM "+ "Friend";
-        TypedQuery<Relationship> typedQuery = entityManager.createQuery(hql, Relationship.class);
-        List<Relationship> relationships = null;
+        String hql = "FROM Friend c WHERE c.userOneId = :userID OR c.userTwoId = :userID";
+        TypedQuery<Friend> typedQuery = entityManager.createQuery(hql, Friend.class);
+        typedQuery.setParameter("userID", user);
+        List<Friend> friends = null;
+        RelationshipCollection relationshipCollection = new RelationshipCollection();
         try {
-            relationships = typedQuery.getResultList();
+            friends = typedQuery.getResultList();
+            relationshipCollection.setRelationships(friends);
 
         }catch (Exception ex){
             ex.printStackTrace();
@@ -38,13 +82,34 @@ public class FriendCollectionHibernateContext implements IFriendRepositoryContex
         finally {
             entityManager.close();
         }
-        RelationshipCollection relationshipCollection = new RelationshipCollection();
-        relationshipCollection.setRelationships(relationships);
         return relationshipCollection;
     }
 
     @Override
-    public boolean UpdateRelationship(Relationship relationship) {
-        return false;
+    public boolean UpdateRelationship(Friend relationship)
+    {
+        EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
+        EntityTransaction entityTransaction = null;
+        Friend returnRelation = null;
+        try {
+            entityTransaction = entityManager.getTransaction();
+            entityTransaction.begin();
+
+            returnRelation = entityManager.find(Friend.class, relationship.getId());
+            returnRelation.setStatus(relationship.getStatus());
+
+            entityManager.persist(returnRelation);
+            entityTransaction.commit();
+        }catch (Exception ex){
+            if(entityTransaction != null){
+                entityTransaction.rollback();
+            }
+            ex.printStackTrace();
+            return false;
+        }
+        finally {
+            entityManager.close();
+        }
+        return true;
     }
 }
