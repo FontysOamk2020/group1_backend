@@ -1,13 +1,13 @@
 package com.BoozeBuddies.Friend.Dal.Interfaces;
 
-import com.BoozeBuddies.Friend.Models.Relationship;
+import com.BoozeBuddies.Friend.Models.Friend;
 import com.BoozeBuddies.Friend.Models.RelationshipCollection;
-import com.BoozeBuddies.Friend.Models.User;
+import com.BoozeBuddies.Friend.Models.RequestRelationship;
 
 public interface IFriendCollectionRepo {
-    boolean AddRelationship(Relationship relationship);
+    boolean AddRelationship(Friend requestRelationship);
 
-    boolean DeleteRelationship(Relationship relationship);
+    boolean DeleteRelationship(Friend relationship);
 
     RelationshipCollection getFriendsById(int id);
 }
