@@ -1,8 +1,8 @@
 package com.BoozeBuddies.Friend.Dal.Interfaces;
 
 
-import com.BoozeBuddies.Friend.Models.Relationship;
+import com.BoozeBuddies.Friend.Models.Friend;
 
 public interface IFriendRepo {
-    boolean UpdateRelationship (Relationship relationship);
+    boolean UpdateRelationship (Friend relationship);
 }

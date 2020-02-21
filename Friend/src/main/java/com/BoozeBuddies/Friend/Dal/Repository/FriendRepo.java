@@ -1,10 +1,8 @@
 package com.BoozeBuddies.Friend.Dal.Repository;
 
 import com.BoozeBuddies.Friend.Dal.Interfaces.IFriendRepositoryContext;
-import com.BoozeBuddies.Friend.Models.Relationship;
+import com.BoozeBuddies.Friend.Models.Friend;
 import com.BoozeBuddies.Friend.Models.RelationshipCollection;
-
-import java.util.List;
 
 public class FriendRepo implements IFriendRepositoryContext {
 
@@ -14,12 +12,12 @@ public class FriendRepo implements IFriendRepositoryContext {
 
 
     @Override
-    public boolean AddRelationship(Relationship relationship) {
+    public boolean AddRelationship(Friend relationship) {
         return false;
     }
 
     @Override
-    public boolean DeleteRelationship(Relationship relationship) {
+    public boolean DeleteRelationship(Friend relationship) {
         return false;
     }
 
@@ -29,7 +27,7 @@ public class FriendRepo implements IFriendRepositoryContext {
     }
 
     @Override
-    public boolean UpdateRelationship(Relationship relationship) {
+    public boolean UpdateRelationship(Friend relationship) {
         return false;
     }
 }
