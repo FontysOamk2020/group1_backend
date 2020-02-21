@@ -24,6 +24,12 @@ public class UserResource {
         return userCollectionLogic.getUserById(id);
     }
 
+    @GetMapping(value = "/getUserByUsername/{username}")
+    User GetUserByUsername(@PathVariable("username")String username)
+    {
+        return userCollectionLogic.GetUserByUsername(username);
+    }
+
     @GetMapping(value = "/getUserByEmail/{email}")
     User GetUserByEmail(@PathVariable("email")String email)
     {

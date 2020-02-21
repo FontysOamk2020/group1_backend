@@ -39,6 +39,11 @@ public class UserRepo implements IUserContext {
     }
 
     @Override
+    public User getUserByUsername(String username) {
+       return context.getUserByUsername(username);
+    }
+
+    @Override
     public User updateUsername(UpdateUser updateUser) {
         return context.updateUsername(updateUser);
     }

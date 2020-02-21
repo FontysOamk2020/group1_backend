@@ -13,4 +13,6 @@ public interface IUserCollectionRepo {
     User getUserById(int id);
 
     User getUserByEmail(String email);
+
+    User getUserByUsername(String username);
 }

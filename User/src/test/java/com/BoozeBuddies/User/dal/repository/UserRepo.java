@@ -43,4 +43,9 @@ public class UserRepo implements IUserContext {
     public User getUserByEmail(String email) {
         return context.getUserByEmail(email);
     }
+
+    @Override
+    public User getUserByUsername(String username) {
+        return context.getUserByUsername(username);
+    }
 }

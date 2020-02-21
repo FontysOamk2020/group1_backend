@@ -24,4 +24,8 @@ public class UserCollectionLogic {
     public User getUserById(int id) { return userCollectionRepo.getUserById(id); }
 
     public User getUserByEmail(String email) { return userCollectionRepo.getUserByEmail(email); }
+
+    public User GetUserByUsername(String username){
+        return userCollectionRepo.getUserByUsername(username);
+    }
 }

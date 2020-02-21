@@ -89,6 +89,25 @@ public class UserContextHibernate implements IUserContext {
         return user;
     }
 
+    @Override
+    public User getUserByUsername(String username) {
+        EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
+        String hql = "SELECT c FROM User c WHERE c.name = :username";
+        TypedQuery<User> typedQuery = entityManager.createQuery(hql, User.class);
+        typedQuery.setParameter("username", username);
+        User user = null;
+        try {
+            user = typedQuery.getSingleResult();
+
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        finally {
+            entityManager.close();
+        }
+        return user;
+    }
+
 
     @Override
     public User updateUsername(UpdateUser updateUser) {

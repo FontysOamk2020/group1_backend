@@ -80,6 +80,11 @@ public class UserContextMySql implements IUserContext {
         return userToReturn;
     }
 
+    @Override
+    public User getUserByUsername(String username) {
+        return null;
+    }
+
     public String getPassword(){
         return "varken";
     }
