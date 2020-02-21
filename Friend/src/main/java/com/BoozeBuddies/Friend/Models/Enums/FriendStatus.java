@@ -1,8 +1,10 @@
 package com.BoozeBuddies.Friend.Models.Enums;
 
+import java.io.Serializable;
+
 public enum FriendStatus
 {
-    Pending,
-    Accepted,
-    Blocked
+    pending,
+    accepted,
+    blocked
 }
