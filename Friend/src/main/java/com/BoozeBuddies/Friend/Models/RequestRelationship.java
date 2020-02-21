@@ -2,7 +2,7 @@ package com.BoozeBuddies.Friend.Models;
 
 public class RequestRelationship {
     User you;
-    int friendID;
+    String friendUsername;
 
     public User getYou() {
         return you;
@@ -12,12 +12,12 @@ public class RequestRelationship {
         this.you = you;
     }
 
-    public int getFriendID() {
-        return friendID;
+    public String getFriendUsername() {
+        return friendUsername;
     }
 
-    public void setFriendID(int friendID) {
-        this.friendID = friendID;
+    public void setFriendUsername(String friendUsername) {
+        this.friendUsername = friendUsername;
     }
 
     public RequestRelationship() {
