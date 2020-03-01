@@ -20,6 +20,7 @@ public class FriendCollectionHibernateContext implements IFriendRepositoryContex
         try {
             entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
+
             entityManager.persist(relationship);
             entityTransaction.commit();
         }catch (Exception ex){

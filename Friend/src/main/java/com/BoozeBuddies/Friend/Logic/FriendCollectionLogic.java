@@ -32,7 +32,7 @@ public class FriendCollectionLogic {
         Friend friend = new Friend();
         friend.setUserOneId(requestRelationship.getYou());
 
-        String url = "http://217.101.44.31:8081/api/public/user/getUserByUsername/"+requestRelationship.getFriendUsername();
+        String url = "http://localhost:8081/api/public/user/getUserByUsername/"+requestRelationship.getFriendUsername();
         User friendUser = (User)ApiRequest.CreateGetRequest(url, new User());
 
         friend.setStatus(FriendStatus.pending);
