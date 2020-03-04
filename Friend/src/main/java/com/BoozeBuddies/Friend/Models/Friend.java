@@ -16,11 +16,11 @@ public class Friend implements Serializable
     @Column(name = "id", unique = true)
     private int id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "userOneId", referencedColumnName = "id")
     private User userOneId;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "userTwoId", referencedColumnName = "id")
     private User userTwoId;
 
