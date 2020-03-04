@@ -12,15 +12,16 @@ import java.io.Serializable;
 public class Friend implements Serializable
 {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true)
     private int id;
 
-    @OneToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "userOneId")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "userOneId", referencedColumnName = "id")
     private User userOneId;
 
-    @OneToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "userTwoId")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "userTwoId", referencedColumnName = "id")
     private User userTwoId;
 
     @Enumerated(EnumType.ORDINAL)
