@@ -1,11 +1,13 @@
-package com.BoozeBuddies.Bar.Context;
+package com.BoozeBuddies.Bar.Dal.Context;
 
-import com.BoozeBuddies.Bar.Interface.IBarContainerContext;
+import com.BoozeBuddies.Bar.Interface.IBarContext;
 import com.BoozeBuddies.Bar.Model.enitities.Bar;
+import com.BoozeBuddies.Bar.Model.enitities.Beer;
 
 import java.util.List;
 
-public class BarContainerContext implements IBarContainerContext {
+public class BarContextMySql implements IBarContext {
+
     @Override
     public Bar AddBar(Bar bar) {
         return null;
@@ -23,6 +25,16 @@ public class BarContainerContext implements IBarContainerContext {
 
     @Override
     public List<Bar> GetAllBar() {
+        return null;
+    }
+
+    @Override
+    public Bar AddBeerToBar(Beer beer, Bar bar) {
+        return null;
+    }
+
+    @Override
+    public Bar RateBar() {
         return null;
     }
 }

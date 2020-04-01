@@ -1,6 +1,5 @@
 package com.BoozeBuddies.Beer.factory;
 
-import com.BoozeBuddies.Beer.Dal.Context.BeerContextHibernate;
 import com.BoozeBuddies.Beer.Dal.Context.BeerContextMySql;
 import com.BoozeBuddies.Beer.Dal.Repository.BeerRepo;
 import com.BoozeBuddies.Beer.interfaces.IBeerCollectionRepo;
