@@ -2,6 +2,7 @@ package com.BoozeBuddies.Bar.Dal.Context;
 
 import com.BoozeBuddies.Bar.Interface.IBarContext;
 import com.BoozeBuddies.Bar.Model.entities.Bar;
+import com.BoozeBuddies.Bar.Model.entities.BarBeer;
 import com.BoozeBuddies.Bar.Model.entities.Beer;
 import com.BoozeBuddies.Bar.Model.viewmodels.BarCollection;
 
@@ -59,13 +60,13 @@ public class BarContextHibernate implements IBarContext{
     public Bar DeleteBar(Bar bar) {
         EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
         EntityTransaction entityTransaction = null;
-        Beer returnBeer = null;
+        Bar returnBar = null;
         try {
             entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
 
-            returnBeer = entityManager.find(Beer.class, bar.getId());
-            entityManager.remove(returnBeer);
+            returnBar = entityManager.find(Bar.class, bar.getId());
+            entityManager.remove(returnBar);
 
             entityTransaction.commit();
         }catch (Exception ex){
@@ -113,6 +114,12 @@ public class BarContextHibernate implements IBarContext{
             entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
 
+            BarBeer beer = bar.getBeers().get(0);
+            bar = entityManager.find(Bar.class, bar.getId());
+
+            beer.setBar(bar);
+            bar.getBeers().add(beer);
+
             entityManager.merge(bar);
             entityTransaction.commit();
         }catch (Exception ex){
@@ -130,5 +137,21 @@ public class BarContextHibernate implements IBarContext{
     @Override
     public Bar RateBar() {
         return null;
+    }
+
+    @Override
+    public Bar GetById(int id) {
+        EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
+        Bar bar = null;
+        try {
+            bar = entityManager.find(Bar.class, id);
+
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        finally {
+            entityManager.close();
+        }
+        return bar;
     }
 }

@@ -41,4 +41,9 @@ public class BarRepository implements IBarContext {
     public Bar RateBar() {
         return context.RateBar();
     }
+
+    @Override
+    public Bar GetById(int id) {
+        return context.GetById(id);
+    }
 }

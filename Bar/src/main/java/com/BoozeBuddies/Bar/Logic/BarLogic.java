@@ -25,4 +25,10 @@ public class BarLogic {
     {
         return barCollectionRepo.RateBar();
     }
+
+    public Bar GetById(int id)
+    {
+        return barCollectionRepo.GetById(id);
+    }
+
 }

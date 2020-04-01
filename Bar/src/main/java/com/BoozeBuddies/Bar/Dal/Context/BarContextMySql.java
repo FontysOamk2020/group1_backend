@@ -36,4 +36,9 @@ public class BarContextMySql implements IBarContext {
     public Bar RateBar() {
         return null;
     }
+
+    @Override
+    public Bar GetById(int id) {
+        return null;
+    }
 }

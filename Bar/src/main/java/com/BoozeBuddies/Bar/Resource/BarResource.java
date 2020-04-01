@@ -50,4 +50,10 @@ public class BarResource {
         return barLogic.RateBar();
     }
 
+    @CrossOrigin(origins = {"*"})
+    @GetMapping(value = "/getById/{id}")
+    public Bar RateBar(@PathVariable("id") int id) {
+        return barLogic.GetById(id);
+    }
+
 }
