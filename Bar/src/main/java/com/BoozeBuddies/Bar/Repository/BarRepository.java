@@ -1,8 +1,8 @@
 package com.BoozeBuddies.Bar.Repository;
 
-import com.BoozeBuddies.Bar.Interface.IBarContainerContext;
 import com.BoozeBuddies.Bar.Interface.IBarContext;
-import com.BoozeBuddies.Bar.Model.Bar;
+import com.BoozeBuddies.Bar.Model.enitities.Bar;
+import com.BoozeBuddies.Bar.Model.enitities.Beer;
 
 public class BarRepository implements IBarContext {
     private IBarContext context;
@@ -11,7 +11,7 @@ public class BarRepository implements IBarContext {
         this.context = context;
     }
 
-    public Bar AddBeerToBar() {
+    public Bar AddBeerToBar(Beer beer, Bar bar) {
         return null;
     }
 

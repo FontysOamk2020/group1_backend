@@ -1,6 +1,6 @@
 package com.BoozeBuddies.Bar.Logic;
 
-import com.BoozeBuddies.Bar.Model.Bar;
+import com.BoozeBuddies.Bar.Model.enitities.Bar;
 
 public class BarContainerLogic {
 

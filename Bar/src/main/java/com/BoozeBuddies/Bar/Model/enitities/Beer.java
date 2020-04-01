@@ -1,6 +1,9 @@
-package com.BoozeBuddies.Bar.Model;
+package com.BoozeBuddies.Bar.Model.enitities;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import javax.persistence.*;
+
 import java.util.List;
 
 @Entity
@@ -20,6 +23,7 @@ public class Beer {
 
     @ManyToMany()
     @JoinTable(name = "bar_beer", joinColumns = @JoinColumn(name = "beer_id"), inverseJoinColumns = @JoinColumn(name = "bar_id"))
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Bar> bars;
 
     public Beer() {
@@ -56,4 +60,13 @@ public class Beer {
     public void setAlcoholPercentage(double alcoholPercentage) {
         this.alcoholPercentage = alcoholPercentage;
     }
+
+    public List<Bar> getBars() {
+        return bars;
+    }
+
+    public void setBars(List<Bar> bars) {
+        this.bars = bars;
+    }
+
 }

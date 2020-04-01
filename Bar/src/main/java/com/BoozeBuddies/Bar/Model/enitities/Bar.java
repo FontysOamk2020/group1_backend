@@ -1,4 +1,7 @@
-package com.BoozeBuddies.Bar.Model;
+package com.BoozeBuddies.Bar.Model.enitities;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.util.List;
@@ -22,16 +25,17 @@ public class Bar {
     private String zipcode;
 
     @Column(name = "telephone_number")
-    private int telephoneNumber;
+    private String telephoneNumber;
 
-    @Column(name = "Longitude")
-    private int Longitude;
+    @Column(name = "longitude")
+    private float longitude;
 
     @Column(name = "latitude")
-    private int latitude;
+    private float latitude;
 
     @ManyToMany()
     @JoinTable(name = "bar_beer", joinColumns = @JoinColumn(name = "bar_id"), inverseJoinColumns = @JoinColumn(name = "beer_id"))
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Beer> beers;
 
     public Bar() {
@@ -69,23 +73,23 @@ public class Bar {
         this.zipcode = zipcode;
     }
 
-    public int getTelephoneNumber() {
+    public String getTelephoneNumber() {
         return telephoneNumber;
     }
 
-    public void setTelephoneNumber(int telephoneNumber) {
+    public void setTelephoneNumber(String telephoneNumber) {
         this.telephoneNumber = telephoneNumber;
     }
 
-    public int getLongitude() {
-        return Longitude;
+    public float getLongitude() {
+        return longitude;
     }
 
     public void setLongitude(int longitude) {
-        Longitude = longitude;
+        longitude = longitude;
     }
 
-    public int getLatitude() {
+    public float getLatitude() {
         return latitude;
     }
 

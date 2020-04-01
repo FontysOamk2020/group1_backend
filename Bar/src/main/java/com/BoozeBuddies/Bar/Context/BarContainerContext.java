@@ -1,23 +1,23 @@
 package com.BoozeBuddies.Bar.Context;
 
 import com.BoozeBuddies.Bar.Interface.IBarContainerContext;
-import com.BoozeBuddies.Bar.Model.Bar;
+import com.BoozeBuddies.Bar.Model.enitities.Bar;
 
 import java.util.List;
 
 public class BarContainerContext implements IBarContainerContext {
     @Override
-    public Bar AddBar() {
+    public Bar AddBar(Bar bar) {
         return null;
     }
 
     @Override
-    public Bar EditBar() {
+    public Bar EditBar(Bar bar) {
         return null;
     }
 
     @Override
-    public Bar DeleteBar() {
+    public Bar DeleteBar(Bar bar) {
         return null;
     }
 

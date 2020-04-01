@@ -1,7 +1,7 @@
 package com.BoozeBuddies.Bar.Repository;
 
 import com.BoozeBuddies.Bar.Interface.IBarContainerContext;
-import com.BoozeBuddies.Bar.Model.Bar;
+import com.BoozeBuddies.Bar.Model.enitities.Bar;
 
 import java.util.List;
 
@@ -13,22 +13,22 @@ public class BarContainerRepository implements IBarContainerContext
     }
 
     @Override
-    public Bar AddBar() {
-        return null;
+    public Bar AddBar(Bar bar) {
+        return context.AddBar();
     }
 
     @Override
-    public Bar EditBar() {
-        return null;
+    public Bar EditBar(Bar bar) {
+        return context.EditBar();
     }
 
     @Override
-    public Bar DeleteBar() {
-        return null;
+    public Bar DeleteBar(Bar bar) {
+        return context.DeleteBar();
     }
 
     @Override
     public List<Bar> GetAllBar() {
-        return null;
+        return context.GetAllBar();
     }
 }

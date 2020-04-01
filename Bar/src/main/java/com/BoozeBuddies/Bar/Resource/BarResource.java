@@ -1,7 +1,6 @@
 package com.BoozeBuddies.Bar.Resource;
 
-import com.BoozeBuddies.Bar.Interface.IBarContext;
-import com.BoozeBuddies.Bar.Model.Bar;
+import com.BoozeBuddies.Bar.Model.enitities.Bar;
 
 public class BarResource {
     public Bar AddBeerToBar() {
