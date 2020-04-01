@@ -2,7 +2,7 @@ package com.BoozeBuddies.Bar.Logic;
 
 import com.BoozeBuddies.Bar.Factory.BarFactory;
 import com.BoozeBuddies.Bar.Interface.IBarCollectionRepo;
-import com.BoozeBuddies.Bar.Model.enitities.Bar;
+import com.BoozeBuddies.Bar.Model.entities.Bar;
 import com.BoozeBuddies.Bar.Model.viewmodels.BarCollection;
 import org.springframework.lang.Nullable;
 

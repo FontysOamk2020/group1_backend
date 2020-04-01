@@ -1,10 +1,9 @@
-package com.BoozeBuddies.Bar.Model.enitities;
+package com.BoozeBuddies.Bar.Model.entities;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
-import java.sql.Time;
 import java.util.List;
 
 @Entity()
@@ -34,13 +33,10 @@ public class Bar {
     @Column(name = "latitude")
     private float latitude;
 
-    @Column(name = "opening time")
-    private Time opening_time;
 
-    @ManyToMany()
-    @JoinTable(name = "bar_beer", joinColumns = @JoinColumn(name = "bar_id"), inverseJoinColumns = @JoinColumn(name = "beer_id"))
+    @OneToMany(mappedBy = "bar", cascade = CascadeType.ALL, orphanRemoval = true)
     @LazyCollection(LazyCollectionOption.FALSE)
-    private List<Beer> beers;
+    private List<BarBeer> beers;
 
     public Bar() {
     }
@@ -89,27 +85,23 @@ public class Bar {
         return longitude;
     }
 
-    public void setLongitude(int longitude) {
-        longitude = longitude;
+    public void setLongitude(float longitude) {
+        this.longitude = longitude;
     }
 
     public float getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(int latitude) {
+    public void setLatitude(float latitude) {
         this.latitude = latitude;
     }
 
-    public void setLongitude(float longitude) {this.longitude = longitude; }
+    public List<BarBeer> getBeers() {
+        return beers;
+    }
 
-    public void setLatitude(float latitude) { this.latitude = latitude; }
-
-    public Time getOpening_time() { return opening_time; }
-
-    public void setOpening_time(Time opening_time) { this.opening_time = opening_time; }
-
-    public List<Beer> getBeers() { return beers; }
-
-    public void setBeers(List<Beer> beers) { this.beers = beers; }
+    public void setBeers(List<BarBeer> beers) {
+        this.beers = beers;
+    }
 }

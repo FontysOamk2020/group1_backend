@@ -1,11 +1,9 @@
 package com.BoozeBuddies.Bar.Dal.Context;
 
 import com.BoozeBuddies.Bar.Interface.IBarContext;
-import com.BoozeBuddies.Bar.Model.enitities.Bar;
-import com.BoozeBuddies.Bar.Model.enitities.Beer;
+import com.BoozeBuddies.Bar.Model.entities.Bar;
+import com.BoozeBuddies.Bar.Model.entities.Beer;
 import com.BoozeBuddies.Bar.Model.viewmodels.BarCollection;
-
-import java.util.List;
 
 public class BarContextMySql implements IBarContext {
 
@@ -30,7 +28,7 @@ public class BarContextMySql implements IBarContext {
     }
 
     @Override
-    public Bar AddBeerToBar(Beer beer, Bar bar) {
+    public Bar AddBeerToBar(Bar bar) {
         return null;
     }
 

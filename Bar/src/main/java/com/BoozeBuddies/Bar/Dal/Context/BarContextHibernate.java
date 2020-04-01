@@ -1,8 +1,8 @@
 package com.BoozeBuddies.Bar.Dal.Context;
 
 import com.BoozeBuddies.Bar.Interface.IBarContext;
-import com.BoozeBuddies.Bar.Model.enitities.Bar;
-import com.BoozeBuddies.Bar.Model.enitities.Beer;
+import com.BoozeBuddies.Bar.Model.entities.Bar;
+import com.BoozeBuddies.Bar.Model.entities.Beer;
 import com.BoozeBuddies.Bar.Model.viewmodels.BarCollection;
 
 import javax.persistence.*;
@@ -106,7 +106,7 @@ public class BarContextHibernate implements IBarContext{
 
 
     @Override
-    public Bar AddBeerToBar(Beer beer, Bar bar) {
+    public Bar AddBeerToBar(Bar bar) {
         EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
         EntityTransaction entityTransaction = null;
         try {
