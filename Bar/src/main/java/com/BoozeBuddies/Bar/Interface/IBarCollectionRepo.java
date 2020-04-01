@@ -1,9 +1,7 @@
 package com.BoozeBuddies.Bar.Interface;
 
-import com.BoozeBuddies.Bar.Model.enitities.Bar;
+import com.BoozeBuddies.Bar.Model.entities.Bar;
 import com.BoozeBuddies.Bar.Model.viewmodels.BarCollection;
-
-import java.util.List;
 
 public interface IBarCollectionRepo {
     Bar AddBar(Bar bar);

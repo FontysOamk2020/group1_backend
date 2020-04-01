@@ -1,10 +1,9 @@
 package com.BoozeBuddies.Bar.Logic;
 
 import com.BoozeBuddies.Bar.Factory.BarFactory;
-import com.BoozeBuddies.Bar.Interface.IBarCollectionRepo;
 import com.BoozeBuddies.Bar.Interface.IBarRepo;
-import com.BoozeBuddies.Bar.Model.enitities.Bar;
-import com.BoozeBuddies.Bar.Model.enitities.Beer;
+import com.BoozeBuddies.Bar.Model.entities.Bar;
+import com.BoozeBuddies.Bar.Model.entities.Beer;
 import org.springframework.lang.Nullable;
 
 public class BarLogic {
@@ -16,9 +15,10 @@ public class BarLogic {
         barCollectionRepo = ((repo == null) ? barFactory.createBarRepoHibernate() : repo);
     }
 
-    public Bar AddBeerToBar(Beer beer, Bar bar)
+    public Bar AddBeerToBar(Bar bar)
     {
-        return barCollectionRepo.AddBeerToBar(beer, bar);
+
+        return barCollectionRepo.AddBeerToBar(bar);
     }
 
     public Bar RateBar()

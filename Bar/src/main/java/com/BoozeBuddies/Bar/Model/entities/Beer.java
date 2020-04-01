@@ -1,9 +1,10 @@
-package com.BoozeBuddies.Bar.Model.enitities;
+package com.BoozeBuddies.Bar.Model.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
-import javax.persistence.*;
 
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -21,10 +22,10 @@ public class Beer {
     @Column(name = "alcoholpercentage", nullable =  false)
     private double alcoholPercentage;
 
-    @ManyToMany()
-    @JoinTable(name = "bar_beer", joinColumns = @JoinColumn(name = "beer_id"), inverseJoinColumns = @JoinColumn(name = "bar_id"))
+    @JsonIgnore
+    @OneToMany(mappedBy = "beer", cascade = CascadeType.ALL, orphanRemoval = true)
     @LazyCollection(LazyCollectionOption.FALSE)
-    private List<Bar> bars;
+    private List<BarBeer> bars;
 
     public Beer() {
     }
@@ -61,12 +62,11 @@ public class Beer {
         this.alcoholPercentage = alcoholPercentage;
     }
 
-    public List<Bar> getBars() {
+    public List<BarBeer> getBars() {
         return bars;
     }
 
-    public void setBars(List<Bar> bars) {
+    public void setBars(List<BarBeer> bars) {
         this.bars = bars;
     }
-
 }

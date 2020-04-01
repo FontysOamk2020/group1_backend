@@ -1,11 +1,9 @@
 package com.BoozeBuddies.Bar.Dal.Repository;
 
 import com.BoozeBuddies.Bar.Interface.IBarContext;
-import com.BoozeBuddies.Bar.Model.enitities.Bar;
-import com.BoozeBuddies.Bar.Model.enitities.Beer;
+import com.BoozeBuddies.Bar.Model.entities.Bar;
+import com.BoozeBuddies.Bar.Model.entities.Beer;
 import com.BoozeBuddies.Bar.Model.viewmodels.BarCollection;
-
-import java.util.List;
 
 public class BarRepository implements IBarContext {
     private IBarContext context;
@@ -35,7 +33,7 @@ public class BarRepository implements IBarContext {
     }
 
     @Override
-    public Bar AddBeerToBar(Beer beer, Bar bar) {
+    public Bar AddBeerToBar(Bar bar) {
         return context.AddBar(bar);
     }
 

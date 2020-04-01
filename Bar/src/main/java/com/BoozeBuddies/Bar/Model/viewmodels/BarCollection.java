@@ -1,6 +1,6 @@
 package com.BoozeBuddies.Bar.Model.viewmodels;
 
-import com.BoozeBuddies.Bar.Model.enitities.Bar;
+import com.BoozeBuddies.Bar.Model.entities.Bar;
 
 import java.util.List;
 

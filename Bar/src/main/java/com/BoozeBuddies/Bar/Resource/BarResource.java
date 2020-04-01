@@ -2,13 +2,10 @@ package com.BoozeBuddies.Bar.Resource;
 
 import com.BoozeBuddies.Bar.Logic.BarCollectionLogic;
 import com.BoozeBuddies.Bar.Logic.BarLogic;
-import com.BoozeBuddies.Bar.Model.enitities.Bar;
-import com.BoozeBuddies.Bar.Model.enitities.Beer;
+import com.BoozeBuddies.Bar.Model.entities.Bar;
+import com.BoozeBuddies.Bar.Model.entities.Beer;
 import com.BoozeBuddies.Bar.Model.viewmodels.BarCollection;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.BoozeBuddies.Bar.Dal.Repository.*;
 import com.BoozeBuddies.Bar.Dal.Context.*;
 
@@ -19,33 +16,38 @@ public class BarResource {
     BarLogic barLogic = new BarLogic((new BarRepository(new BarContextHibernate())));
 
     @CrossOrigin(origins = {"*"})
-    @PutMapping(value = "/addBar")
-    public Bar AddBar(Bar bar) {
+    @PostMapping(value = "/addBar")
+    public Bar AddBar(@RequestBody Bar bar) {
         return barCollectionLogic.AddBar(bar);
     }
     @CrossOrigin(origins = {"*"})
     @PutMapping(value = "/editBar")
-    public Bar EditBar(Bar bar) {
+    public Bar EditBar(@RequestBody Bar bar) {
         return barCollectionLogic.EditBar(bar);
     }
+
     @CrossOrigin(origins = {"*"})
-    @PutMapping(value = "/deleteBar")
-    public Bar DeleteBar(Bar bar) {
+    @DeleteMapping(value = "/deleteBar")
+    public Bar DeleteBar(@RequestBody Bar bar) {
         return barCollectionLogic.DeleteBar(bar);
     }
+
     @CrossOrigin(origins = {"*"})
-    @PutMapping(value = "/getAllBeers")
+    @GetMapping(value = "/getAllBars")
     public BarCollection GetAllBars() {
         return barCollectionLogic.GetAllBars();
     }
+
     @CrossOrigin(origins = {"*"})
-    @PutMapping(value = "/addBeerToBar")
-    public Bar AddBeerToBar(Beer beer, Bar bar) {
-        return barLogic.AddBeerToBar(beer, bar);
+    @PostMapping(value = "/addBeerToBar")
+    public Bar AddBeerToBar(@RequestBody Bar bar) {
+        return barLogic.AddBeerToBar(bar);
     }
+
     @CrossOrigin(origins = {"*"})
-    @PutMapping(value = "/rateBeer")
+    @PostMapping(value = "/rateBeer")
     public Bar RateBar() {
         return barLogic.RateBar();
     }
+
 }
