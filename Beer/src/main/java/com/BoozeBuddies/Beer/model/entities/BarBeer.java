@@ -18,7 +18,7 @@ public class BarBeer {
     private Bar bar;
 
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @MapsId("beer_id")
     private Beer beer;
 

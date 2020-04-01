@@ -65,8 +65,9 @@ public class BeerContextHibernate implements IBeerContext {
             entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
 
-            returnBeer = entityManager.find(Beer.class, beer.getId());
-            entityManager.remove(returnBeer);
+            //returnBeer = entityManager.find(Beer.class, beer.getId());
+            beer = entityManager.merge(beer);
+            entityManager.remove(beer);
 
             entityTransaction.commit();
         }catch (Exception ex){
