@@ -4,6 +4,7 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
+import java.sql.Time;
 import java.util.List;
 
 @Entity()
@@ -32,6 +33,9 @@ public class Bar {
 
     @Column(name = "latitude")
     private float latitude;
+
+    @Column(name = "opening time")
+    private Time opening_time;
 
     @ManyToMany()
     @JoinTable(name = "bar_beer", joinColumns = @JoinColumn(name = "bar_id"), inverseJoinColumns = @JoinColumn(name = "beer_id"))
@@ -96,4 +100,16 @@ public class Bar {
     public void setLatitude(int latitude) {
         this.latitude = latitude;
     }
+
+    public void setLongitude(float longitude) {this.longitude = longitude; }
+
+    public void setLatitude(float latitude) { this.latitude = latitude; }
+
+    public Time getOpening_time() { return opening_time; }
+
+    public void setOpening_time(Time opening_time) { this.opening_time = opening_time; }
+
+    public List<Beer> getBeers() { return beers; }
+
+    public void setBeers(List<Beer> beers) { this.beers = beers; }
 }
