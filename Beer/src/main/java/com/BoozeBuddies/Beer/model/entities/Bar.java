@@ -1,5 +1,6 @@
 package com.BoozeBuddies.Beer.model.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
@@ -33,10 +34,10 @@ public class Bar {
     @Column(name = "latitude")
     private float latitude;
 
-    @ManyToMany()
-    @JoinTable(name = "bar_beer", joinColumns = @JoinColumn(name = "bar_id"), inverseJoinColumns = @JoinColumn(name = "beer_id"))
+    @JsonIgnore
+    @OneToMany(mappedBy = "bar", cascade = CascadeType.ALL, orphanRemoval = true)
     @LazyCollection(LazyCollectionOption.FALSE)
-    private List<Beer> beers;
+    private List<BarBeer> beers;
 
     public Bar() {
     }
@@ -85,15 +86,23 @@ public class Bar {
         return longitude;
     }
 
-    public void setLongitude(int longitude) {
-        longitude = longitude;
+    public void setLongitude(float longitude) {
+        this.longitude = longitude;
     }
 
     public float getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(int latitude) {
+    public void setLatitude(float latitude) {
         this.latitude = latitude;
+    }
+
+    public List<BarBeer> getBeers() {
+        return beers;
+    }
+
+    public void setBeers(List<BarBeer> beers) {
+        this.beers = beers;
     }
 }
