@@ -19,6 +19,7 @@ public class BarBeer {
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @MapsId("beer_id")
     private Beer beer;
 
