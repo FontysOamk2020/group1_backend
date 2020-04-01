@@ -1,4 +1,4 @@
 package com.BoozeBuddies.Bar.Interface;
 
-public interface IBarContext extends IBarRepo, IBarContainerContext {
+public interface IBarContext extends IBarRepo, IBarCollectionRepo {
 }

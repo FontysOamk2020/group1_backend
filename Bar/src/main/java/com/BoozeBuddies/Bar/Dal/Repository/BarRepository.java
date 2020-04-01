@@ -3,6 +3,7 @@ package com.BoozeBuddies.Bar.Dal.Repository;
 import com.BoozeBuddies.Bar.Interface.IBarContext;
 import com.BoozeBuddies.Bar.Model.enitities.Bar;
 import com.BoozeBuddies.Bar.Model.enitities.Beer;
+import com.BoozeBuddies.Bar.Model.viewmodels.BarCollection;
 
 import java.util.List;
 
@@ -29,8 +30,8 @@ public class BarRepository implements IBarContext {
     }
 
     @Override
-    public List<Bar> GetAllBar() {
-        return context.GetAllBar();
+    public BarCollection GetAllBars() {
+        return context.GetAllBars();
     }
 
     @Override
