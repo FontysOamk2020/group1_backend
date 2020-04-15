@@ -2,7 +2,7 @@ package com.BoozeBuddies.Bar.Dal.Context;
 
 import com.BoozeBuddies.Bar.Interface.IBarContext;
 import com.BoozeBuddies.Bar.Model.entities.Bar;
-import com.BoozeBuddies.Bar.Model.entities.Beer;
+import com.BoozeBuddies.Bar.Model.viewmodels.BarBeerModel;
 import com.BoozeBuddies.Bar.Model.viewmodels.BarCollection;
 
 public class BarContextMySql implements IBarContext {
@@ -28,7 +28,7 @@ public class BarContextMySql implements IBarContext {
     }
 
     @Override
-    public Bar AddBeerToBar(Bar bar) {
+    public BarBeerModel AddBeerToBar(com.BoozeBuddies.Bar.Model.entities.BarBeer barBeer) {
         return null;
     }
 

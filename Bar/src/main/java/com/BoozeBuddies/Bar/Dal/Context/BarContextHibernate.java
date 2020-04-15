@@ -3,7 +3,8 @@ package com.BoozeBuddies.Bar.Dal.Context;
 import com.BoozeBuddies.Bar.Interface.IBarContext;
 import com.BoozeBuddies.Bar.Model.entities.Bar;
 import com.BoozeBuddies.Bar.Model.entities.BarBeer;
-import com.BoozeBuddies.Bar.Model.entities.Beer;
+import com.BoozeBuddies.Bar.Model.entities.BarBeerScamEntity;
+import com.BoozeBuddies.Bar.Model.viewmodels.BarBeerModel;
 import com.BoozeBuddies.Bar.Model.viewmodels.BarCollection;
 
 import javax.persistence.*;
@@ -57,6 +58,35 @@ public class BarContextHibernate implements IBarContext{
     }
 
     @Override
+    public BarBeerModel AddBeerToBar(BarBeer barBeer) {
+        EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
+        EntityTransaction entityTransaction = null;
+
+        //Fill the scam entity
+        BarBeerScamEntity barBeerScamEntity = new BarBeerScamEntity();
+        barBeerScamEntity.setBar_id(barBeer.getBar().getId());
+        barBeerScamEntity.setBeer_id(barBeer.getBeer().getId());
+        barBeerScamEntity.setPrice(barBeer.getPrice());
+
+        try {
+            entityTransaction = entityManager.getTransaction();
+            entityTransaction.begin();
+
+            entityManager.persist(barBeerScamEntity);
+            entityTransaction.commit();
+        }catch (Exception ex){
+            if(entityTransaction != null){
+                entityTransaction.rollback();
+            }
+            ex.printStackTrace();
+        }
+        finally {
+            entityManager.close();
+        }
+        return new BarBeerModel();
+    }
+
+    @Override
     public Bar DeleteBar(Bar bar) {
         EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
         EntityTransaction entityTransaction = null;
@@ -103,35 +133,6 @@ public class BarContextHibernate implements IBarContext{
         }
 
         return barCollection;
-    }
-
-
-    @Override
-    public Bar AddBeerToBar(Bar bar) {
-        EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
-        EntityTransaction entityTransaction = null;
-        try {
-            entityTransaction = entityManager.getTransaction();
-            entityTransaction.begin();
-
-            BarBeer beer = bar.getBeers().get(0);
-            bar = entityManager.find(Bar.class, bar.getId());
-
-            beer.setBar(bar);
-            bar.getBeers().add(beer);
-
-            entityManager.merge(bar);
-            entityTransaction.commit();
-        }catch (Exception ex){
-            if(entityTransaction != null){
-                entityTransaction.rollback();
-            }
-            ex.printStackTrace();
-        }
-        finally {
-            entityManager.close();
-        }
-        return bar;
     }
 
     @Override
