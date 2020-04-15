@@ -18,13 +18,13 @@ public class BarResource {
 
     @CrossOrigin(origins = {"*"})
     @PostMapping(value = "/getBarAverage")
-    public double AddBar(@RequestBody Bar bar) {
+    public double GetBarRatingAverage(@RequestBody Bar bar) {
         return ratingCollectionLogic.GetBarRatingAverage(bar.getId());
     }
 
     @CrossOrigin(origins = {"*"})
     @PutMapping(value = "//getBeerAverage")
-    public double EditBar(@RequestBody Beer beer) {
+    public double GetBeerRatingAverage(@RequestBody Beer beer) {
         return ratingCollectionLogic.GetBeerRatingAverage(beer.getId());
     }
 
@@ -33,7 +33,4 @@ public class BarResource {
     public Object DeleteBar(JSONPObject jsonpObject) {
         return ratingLogic.AddRating(jsonpObject);
     }
-
-
-
 }
