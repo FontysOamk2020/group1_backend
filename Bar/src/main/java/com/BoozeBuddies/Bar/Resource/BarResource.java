@@ -3,13 +3,16 @@ package com.BoozeBuddies.Bar.Resource;
 import com.BoozeBuddies.Bar.Logic.BarCollectionLogic;
 import com.BoozeBuddies.Bar.Logic.BarLogic;
 import com.BoozeBuddies.Bar.Model.entities.Bar;
-import com.BoozeBuddies.Bar.Model.entities.Beer;
+import com.BoozeBuddies.Bar.Model.viewmodels.BarBeerModel;
 import com.BoozeBuddies.Bar.Model.viewmodels.BarCollection;
 import org.springframework.web.bind.annotation.*;
 import com.BoozeBuddies.Bar.Dal.Repository.*;
 import com.BoozeBuddies.Bar.Dal.Context.*;
 
+import javax.transaction.Transactional;
+
 @RestController
+@Transactional
 @RequestMapping(value = "api/public/bar")
 public class BarResource {
     BarCollectionLogic barCollectionLogic = new BarCollectionLogic(new BarRepository(new BarContextHibernate()));
@@ -20,6 +23,7 @@ public class BarResource {
     public Bar AddBar(@RequestBody Bar bar) {
         return barCollectionLogic.AddBar(bar);
     }
+
     @CrossOrigin(origins = {"*"})
     @PutMapping(value = "/editBar")
     public Bar EditBar(@RequestBody Bar bar) {
@@ -40,8 +44,8 @@ public class BarResource {
 
     @CrossOrigin(origins = {"*"})
     @PostMapping(value = "/addBeerToBar")
-    public Bar AddBeerToBar(@RequestBody Bar bar) {
-        return barLogic.AddBeerToBar(bar);
+    public BarBeerModel AddBeerToBar(@RequestBody BarBeerModel barBeer) {
+        return barLogic.AddBeerToBar(barBeer);
     }
 
     @CrossOrigin(origins = {"*"})
@@ -52,7 +56,7 @@ public class BarResource {
 
     @CrossOrigin(origins = {"*"})
     @GetMapping(value = "/getById/{id}")
-    public Bar RateBar(@PathVariable("id") int id) {
+    public Bar GetBarById(@PathVariable("id") int id) {
         return barLogic.GetById(id);
     }
 

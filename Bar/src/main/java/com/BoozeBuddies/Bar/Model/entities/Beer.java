@@ -23,7 +23,7 @@ public class Beer {
     private double alcoholPercentage;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "beer", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "beer", cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<BarBeer> bars;
 

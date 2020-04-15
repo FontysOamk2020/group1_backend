@@ -1,27 +1,21 @@
 package com.BoozeBuddies.Bar.Model.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 
-@Entity(name = "BarBeer")
+@Entity(name = "BarBeerScamEntity")
 @Table(name = "bar_beer")
-public class BarBeer {
+public class BarBeerScamEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, updatable = false)
     private int id;
 
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    @MapsId("bar_id")
-    private Bar bar;
+    @Column(name = "beer_id")
+    private int beer_id;
 
-
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @MapsId("beer_id")
-    private Beer beer;
+    @Column(name = "bar_id")
+    private int bar_id;
 
     @Column(name = "price")
     private double price;
@@ -34,20 +28,20 @@ public class BarBeer {
         this.id = id;
     }
 
-    public Bar getBar() {
-        return bar;
+    public int getBeer_id() {
+        return beer_id;
     }
 
-    public void setBar(Bar bar) {
-        this.bar = bar;
+    public void setBeer_id(int beer_id) {
+        this.beer_id = beer_id;
     }
 
-    public Beer getBeer() {
-        return beer;
+    public int getBar_id() {
+        return bar_id;
     }
 
-    public void setBeer(Beer beer) {
-        this.beer = beer;
+    public void setBar_id(int bar_id) {
+        this.bar_id = bar_id;
     }
 
     public double getPrice() {
@@ -56,8 +50,5 @@ public class BarBeer {
 
     public void setPrice(double price) {
         this.price = price;
-    }
-
-    public BarBeer() {
     }
 }

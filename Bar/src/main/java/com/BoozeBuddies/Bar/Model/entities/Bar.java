@@ -34,7 +34,7 @@ public class Bar {
     private float latitude;
 
 
-    @OneToMany(mappedBy = "bar", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "bar", cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<BarBeer> beers;
 

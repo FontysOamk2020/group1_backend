@@ -15,6 +15,7 @@
         <class>com.BoozeBuddies.Bar.Model.entities.Beer</class>
         <class>com.BoozeBuddies.Bar.Model.entities.Bar</class>
         <class>com.BoozeBuddies.Bar.Model.entities.BarBeer</class>
+        <class>com.BoozeBuddies.Bar.Model.entities.BarBeerScamEntity</class>
         <properties>
             <!-- Driver for DB database -->
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
