@@ -23,14 +23,20 @@ public class BarResource {
     }
 
     @CrossOrigin(origins = {"*"})
-    @PutMapping(value = "//getBeerAverage")
+    @PutMapping(value = "/getBeerAverage")
     public double GetBeerRatingAverage(@RequestBody Beer beer) {
         return ratingCollectionLogic.GetBeerRatingAverage(beer.getId());
     }
 
     @CrossOrigin(origins = {"*"})
-    @DeleteMapping(value = "/rate")
-    public Object DeleteBar(JSONPObject jsonpObject) {
+    @DeleteMapping(value = "/rateBar")
+    public Object DeleteBar(@RequestBody) {
+        return ratingLogic.AddRating(jsonpObject);
+    }
+
+    @CrossOrigin(origins = {"*"})
+    @DeleteMapping(value = "/rateBeer")
+    public Object DeleteBar(@RequestBody) {
         return ratingLogic.AddRating(jsonpObject);
     }
 }
