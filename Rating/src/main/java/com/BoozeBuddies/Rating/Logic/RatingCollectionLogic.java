@@ -27,7 +27,10 @@ public class RatingCollectionLogic {
         double average = 0;
         for (BarRatingScam rating : barRatingsCollection.getBarRatings())
         {
-            average = average + rating.getRating();
+            if(rating.getBarId() == barId)
+            {
+                average = average + rating.getRating();
+            }
         }
         average = average / barRatingsCollection.getBarRatings().size();
 
@@ -40,7 +43,10 @@ public class RatingCollectionLogic {
         double average = 0;
         for (BeerRatingScam rating : beerRatingCollection.getBeerRatings())
         {
-            average = average + rating.getRating();
+            if(rating.getBeerId() == beerId)
+            {
+                average = average + rating.getRating();
+            }
         }
         average = average / beerRatingCollection.getBeerRatings().size();
 
