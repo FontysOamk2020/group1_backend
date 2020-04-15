@@ -5,38 +5,40 @@ import com.BoozeBuddies.Rating.Dal.Context.RatingContextHibernate;
 import com.BoozeBuddies.Rating.Dal.Repository.RatingRepository;
 import com.BoozeBuddies.Rating.Logic.RatingCollectionLogic;
 import com.BoozeBuddies.Rating.Logic.RatingLogic;
+import com.BoozeBuddies.Rating.Model.Rating;
 import com.BoozeBuddies.Rating.Model.entities.Bar;
 import com.BoozeBuddies.Rating.Model.entities.Beer;
+import com.BoozeBuddies.Rating.Model.viewmodels.AverageRatingViewmodel;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "api/public/bar")
-public class BarResource {
+public class RatingResource {
     RatingCollectionLogic ratingCollectionLogic = new RatingCollectionLogic(new RatingRepository(new RatingContextHibernate()));
     RatingLogic ratingLogic = new RatingLogic((new RatingRepository(new RatingContextHibernate())));
 
     @CrossOrigin(origins = {"*"})
-    @PostMapping(value = "/getBarAverage")
-    public double GetBarRatingAverage(@RequestBody Bar bar) {
-        return ratingCollectionLogic.GetBarRatingAverage(bar.getId());
+    @GetMapping(value = "/getBarAverage/{BarId}")
+    public AverageRatingViewmodel GetBarRatingAverage(@PathVariable("BarId") int id) {
+        return ratingCollectionLogic.GetBarRatingAverage(id);
     }
 
     @CrossOrigin(origins = {"*"})
-    @PutMapping(value = "/getBeerAverage")
-    public double GetBeerRatingAverage(@RequestBody Beer beer) {
-        return ratingCollectionLogic.GetBeerRatingAverage(beer.getId());
+    @GetMapping(value = "/getBeerAverage/{BeerId}")
+    public AverageRatingViewmodel GetBeerRatingAverage(@PathVariable("BeerId") int id) {
+        return ratingCollectionLogic.GetBeerRatingAverage(id);
     }
 
     @CrossOrigin(origins = {"*"})
-    @DeleteMapping(value = "/rateBar")
-    public Object DeleteBar(@RequestBody) {
-        return ratingLogic.AddRating(jsonpObject);
+    @PostMapping(value = "/rateBar")
+    public Object RateBar(@RequestBody Rating rating) {
+        return ratingLogic.AddBarRating(rating);
     }
 
     @CrossOrigin(origins = {"*"})
-    @DeleteMapping(value = "/rateBeer")
-    public Object DeleteBar(@RequestBody) {
-        return ratingLogic.AddRating(jsonpObject);
+    @PostMapping(value = "/rateBeer")
+    public Object RateBeer(@RequestBody Rating rating) {
+        return ratingLogic.AddBeerRating(rating);
     }
 }

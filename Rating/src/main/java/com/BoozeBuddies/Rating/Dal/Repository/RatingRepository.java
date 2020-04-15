@@ -2,6 +2,7 @@ package com.BoozeBuddies.Rating.Dal.Repository;
 
 
 import com.BoozeBuddies.Rating.Interface.IRatingContext;
+import com.BoozeBuddies.Rating.Model.Rating;
 import com.BoozeBuddies.Rating.Model.viewmodels.BarRatingsCollection;
 import com.BoozeBuddies.Rating.Model.viewmodels.BeerRatingCollection;
 
@@ -23,7 +24,12 @@ public class RatingRepository implements IRatingContext {
     }
 
     @Override
-    public Object AddRating(Object rating) {
-        return null;
+    public Object AddBarRating(Rating rating) {
+        return context.AddBarRating(rating);
+    }
+
+    @Override
+    public Object AddBeerRating(Rating rating) {
+        return context.AddBeerRating(rating);
     }
 }

@@ -1,5 +1,6 @@
 package com.BoozeBuddies.Rating.Model.entities;
 
+import com.BoozeBuddies.Rating.Model.Rating;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -15,18 +16,29 @@ public class BeerRating {
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @MapsId("user_id")
-    private int userId;
+    private User userId;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @MapsId("beer_id")
-    private int beerId;
+    private Beer beerId;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "rating", nullable = false)
     private double rating;
 
     public BeerRating() {
     }
+
+    public BeerRating(Rating rating) {
+        this.beerId = new Beer();
+        beerId.setId(rating.getObjectId());
+
+        this.userId = new User();
+        userId.setId(rating.getUserId());
+
+        this.rating = rating.getObjectRating();
+    }
+
 
     public int getId() {
         return id;
@@ -36,19 +48,19 @@ public class BeerRating {
         this.id = id;
     }
 
-    public int getUserId() {
+    public User getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(User userId) {
         this.userId = userId;
     }
 
-    public int getBeerId() {
+    public Beer getBeerId() {
         return beerId;
     }
 
-    public void setBeerId(int beerId) {
+    public void setBeerId(Beer beerId) {
         this.beerId = beerId;
     }
 

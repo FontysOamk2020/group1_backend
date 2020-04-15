@@ -2,8 +2,11 @@ package com.BoozeBuddies.Rating.Dal.Context;
 
 
 import com.BoozeBuddies.Rating.Interface.IRatingContext;
+import com.BoozeBuddies.Rating.Model.Rating;
 import com.BoozeBuddies.Rating.Model.entities.BarRating;
+import com.BoozeBuddies.Rating.Model.entities.BarRatingScam;
 import com.BoozeBuddies.Rating.Model.entities.BeerRating;
+import com.BoozeBuddies.Rating.Model.entities.BeerRatingScam;
 import com.BoozeBuddies.Rating.Model.viewmodels.BarRatingsCollection;
 import com.BoozeBuddies.Rating.Model.viewmodels.BeerRatingCollection;
 
@@ -16,13 +19,13 @@ public class RatingContextHibernate implements IRatingContext {
     @Override
     public BarRatingsCollection GetBarRatingAverage(int BarId) {
         EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
-        String hql = "FROM bar_rating";
-        List<BarRating> barRatings;
+        String hql = "FROM BarRatingScam";
+        List<BarRatingScam> barRatings;
         BarRatingsCollection barRatingsCollection = new BarRatingsCollection();
 
         try
         {
-            TypedQuery<BarRating> typedQuery = entityManager.createQuery(hql, BarRating.class);
+            TypedQuery<BarRatingScam> typedQuery = entityManager.createQuery(hql, BarRatingScam.class);
             barRatings = typedQuery.getResultList();
             barRatingsCollection.setBarRatings(barRatings);
 
@@ -42,13 +45,13 @@ public class RatingContextHibernate implements IRatingContext {
     @Override
     public BeerRatingCollection GetBeerRatingAverage(int BeerId) {
         EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
-        String hql = "FROM beer_rating";
-        List<BeerRating> beerRatings;
+        String hql = "FROM BeerRatingScam";
+        List<BeerRatingScam> beerRatings;
         BeerRatingCollection beerRatingsCollection = new BeerRatingCollection();
 
         try
         {
-            TypedQuery<BeerRating> typedQuery = entityManager.createQuery(hql, BeerRating.class);
+            TypedQuery<BeerRatingScam> typedQuery = entityManager.createQuery(hql, BeerRatingScam.class);
             beerRatings = typedQuery.getResultList();
             beerRatingsCollection.setBeerRatings(beerRatings);
 
@@ -64,14 +67,40 @@ public class RatingContextHibernate implements IRatingContext {
     }
 
     @Override
-    public Object AddRating(Object rating) {
+    public Object AddBarRating(Rating rating) {
         EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
         EntityTransaction entityTransaction = null;
+        BarRatingScam barRating = new BarRatingScam(rating);
+
         try {
             entityTransaction = entityManager.getTransaction();
             entityTransaction.begin();
 
-            entityManager.persist(rating);
+            entityManager.persist(barRating);
+            entityTransaction.commit();
+        }catch (Exception ex){
+            if(entityTransaction != null){
+                entityTransaction.rollback();
+            }
+            ex.printStackTrace();
+        }
+        finally {
+            entityManager.close();
+        }
+        return rating;
+    }
+
+    @Override
+    public Object AddBeerRating(Rating rating) {
+        EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
+        EntityTransaction entityTransaction = null;
+        BeerRatingScam beerRating = new BeerRatingScam(rating);
+
+        try {
+            entityTransaction = entityManager.getTransaction();
+            entityTransaction.begin();
+
+            entityManager.persist(beerRating);
             entityTransaction.commit();
         }catch (Exception ex){
             if(entityTransaction != null){

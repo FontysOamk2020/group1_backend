@@ -1,6 +1,8 @@
 package com.BoozeBuddies.Rating.Model.viewmodels;
 
-import com.BoozeBuddies.Bar.Model.entities.Bar;
+
+
+import com.BoozeBuddies.Rating.Model.entities.Bar;
 
 import java.util.List;
 

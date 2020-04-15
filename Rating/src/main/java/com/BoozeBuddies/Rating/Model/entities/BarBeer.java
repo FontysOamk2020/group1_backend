@@ -1,5 +1,6 @@
 package com.BoozeBuddies.Rating.Model.entities;
 
+import com.BoozeBuddies.Rating.Model.Rating;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;

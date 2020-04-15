@@ -3,22 +3,24 @@ package com.BoozeBuddies.Rating.Logic;
 
 import com.BoozeBuddies.Rating.Factory.RatingFactory;
 import com.BoozeBuddies.Rating.Interface.IRatingRepo;
-import org.json.JSONObject;
 
+import com.BoozeBuddies.Rating.Model.Rating;
 import org.springframework.lang.Nullable;
 
 public class RatingLogic {
     private RatingFactory ratingFactory = new RatingFactory();
-    private IRatingRepo barCollectionRepo = ratingFactory.createBarRepoHibernate();
+    private IRatingRepo context = ratingFactory.createBarRepoHibernate();
 
     public RatingLogic(@Nullable IRatingRepo repo)
     {
-        barCollectionRepo = ((repo == null) ? ratingFactory.createBarRepoHibernate() : repo);
+        context = ((repo == null) ? ratingFactory.createBarRepoHibernate() : repo);
     }
 
-    public Object AddRating(JSONObject) {
+    public Object AddBarRating(Rating rating) {
+        return context.AddBarRating(rating);
+    }
 
-        Class ReflectionClass = Class.forName("com.BoozeBuddies.Rating.Model.entities" + jsonpObject.)
-        return null;
+    public Object AddBeerRating(Rating rating) {
+        return context.AddBeerRating(rating);
     }
 }

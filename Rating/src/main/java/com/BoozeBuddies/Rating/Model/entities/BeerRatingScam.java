@@ -2,43 +2,35 @@ package com.BoozeBuddies.Rating.Model.entities;
 
 import com.BoozeBuddies.Rating.Model.Rating;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "bar_rating")
-public class BarRating {
+@Table(name = "beer_rating")
+public class BeerRatingScam {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, updatable = false)
     private int id;
 
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @MapsId("user_id")
-    private User userId;
-
+    @Column(name = "user_id")
+    private int userId;
 
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @MapsId("bar_id")
-    private Bar barId;
+    @Column(name = "beer_id")
+    private int beerId;
 
     @Column(name = "rating", nullable = false)
     private double rating;
 
-    public BarRating() {
+    public BeerRatingScam() {
     }
 
-    public BarRating(Rating rating) {
-        this.barId = new Bar();
-        barId.setId(rating.getObjectId());
-
-        this.userId = new User();
-        userId.setId(rating.getUserId());
-
+    public BeerRatingScam(Rating rating) {
+        this.beerId = rating.getObjectId();
+        this.userId = rating.getUserId();
         this.rating = rating.getObjectRating();
     }
 
@@ -50,20 +42,20 @@ public class BarRating {
         this.id = id;
     }
 
-    public User getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(User userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
-    public Bar getBarId() {
-        return barId;
+    public int getBeerId() {
+        return beerId;
     }
 
-    public void setBarId(Bar barId) {
-        this.barId = barId;
+    public void setBeerId(int beerId) {
+        this.beerId = beerId;
     }
 
     public double getRating() {
