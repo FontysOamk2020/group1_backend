@@ -13,12 +13,9 @@ public class BarRatingScam {
     @Column(name = "id", unique = true, updatable = false)
     private int id;
 
-    @JsonIgnore
     @Column(name = "user_id")
     private int userId;
 
-
-    @JsonIgnore
     @Column(name = "bar_id")
     private int barId;
 
