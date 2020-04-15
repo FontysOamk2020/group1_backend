@@ -21,9 +21,9 @@ public class BarLogic {
         return barCollectionRepo.AddBeerToBar(bar);
     }
 
-    public Bar RateBar()
+    public Bar RateBar(Bar bar)
     {
-        return barCollectionRepo.RateBar();
+        return barCollectionRepo.RateBar(bar);
     }
 
     public Bar GetById(int id)

@@ -38,8 +38,8 @@ public class BarRepository implements IBarContext {
     }
 
     @Override
-    public Bar RateBar() {
-        return context.RateBar();
+    public Bar RateBar(Bar bar) {
+        return context.RateBar(bar);
     }
 
     @Override

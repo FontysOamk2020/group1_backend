@@ -135,8 +135,25 @@ public class BarContextHibernate implements IBarContext{
     }
 
     @Override
-    public Bar RateBar() {
-        return null;
+    public Bar RateBar(Bar bar) {
+        EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
+        EntityTransaction entityTransaction = null;
+        try {
+            entityTransaction = entityManager.getTransaction();
+            entityTransaction.begin();
+
+            entityManager.merge(bar);
+            entityTransaction.commit();
+        }catch (Exception ex){
+            if(entityTransaction != null){
+                entityTransaction.rollback();
+            }
+            ex.printStackTrace();
+        }
+        finally {
+            entityManager.close();
+        }
+        return bar;
     }
 
     @Override

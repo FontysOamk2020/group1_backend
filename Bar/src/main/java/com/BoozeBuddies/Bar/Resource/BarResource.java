@@ -46,8 +46,8 @@ public class BarResource {
 
     @CrossOrigin(origins = {"*"})
     @PostMapping(value = "/rateBeer")
-    public Bar RateBar() {
-        return barLogic.RateBar();
+    public Bar RateBar(@RequestBody Bar bar) {
+        return barLogic.RateBar(bar);
     }
 
     @CrossOrigin(origins = {"*"})

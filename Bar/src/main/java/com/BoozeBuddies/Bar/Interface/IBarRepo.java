@@ -5,6 +5,6 @@ import com.BoozeBuddies.Bar.Model.entities.Beer;
 
 public interface IBarRepo {
     Bar AddBeerToBar(Bar bar);
-    Bar RateBar();
+    Bar RateBar(Bar bar);
     Bar GetById(int id);
 }

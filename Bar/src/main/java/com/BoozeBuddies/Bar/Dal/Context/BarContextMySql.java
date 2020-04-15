@@ -33,7 +33,7 @@ public class BarContextMySql implements IBarContext {
     }
 
     @Override
-    public Bar RateBar() {
+    public Bar RateBar(Bar bar) {
         return null;
     }
 
