@@ -10,6 +10,7 @@ import com.BoozeBuddies.Rating.Model.entities.BeerRatingScam;
 import com.BoozeBuddies.Rating.Model.viewmodels.AverageRatingViewmodel;
 import com.BoozeBuddies.Rating.Model.viewmodels.BarRatingsCollection;
 import com.BoozeBuddies.Rating.Model.viewmodels.BeerRatingCollection;
+import com.BoozeBuddies.Rating.Model.viewmodels.UserRatings;
 import org.springframework.lang.Nullable;
 
 public class RatingCollectionLogic {
@@ -30,7 +31,7 @@ public class RatingCollectionLogic {
         }
         average = average / barRatingsCollection.getBarRatings().size();
 
-        AverageRatingViewmodel averageRatingViewmodel = new AverageRatingViewmodel(average, barId, "Bar");
+        AverageRatingViewmodel averageRatingViewmodel = new AverageRatingViewmodel(average, barId, "Bar", barRatingsCollection.getBarRatings().size());
         return averageRatingViewmodel;
     }
 
@@ -43,7 +44,12 @@ public class RatingCollectionLogic {
         }
         average = average / beerRatingCollection.getBeerRatings().size();
 
-        AverageRatingViewmodel averageRatingViewmodel = new AverageRatingViewmodel(average, beerId, "Beer");
+        AverageRatingViewmodel averageRatingViewmodel = new AverageRatingViewmodel(average, beerId, "Beer", beerRatingCollection.getBeerRatings().size());
         return  averageRatingViewmodel;
+    }
+
+    public UserRatings GetAllUserRatings(int userId) {
+
+        return ratingCollectionRepo.GetAllUserRatings(userId);
     }
 }

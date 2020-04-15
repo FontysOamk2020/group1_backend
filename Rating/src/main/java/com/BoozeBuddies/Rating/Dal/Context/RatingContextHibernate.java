@@ -3,12 +3,10 @@ package com.BoozeBuddies.Rating.Dal.Context;
 
 import com.BoozeBuddies.Rating.Interface.IRatingContext;
 import com.BoozeBuddies.Rating.Model.Rating;
-import com.BoozeBuddies.Rating.Model.entities.BarRating;
-import com.BoozeBuddies.Rating.Model.entities.BarRatingScam;
-import com.BoozeBuddies.Rating.Model.entities.BeerRating;
-import com.BoozeBuddies.Rating.Model.entities.BeerRatingScam;
+import com.BoozeBuddies.Rating.Model.entities.*;
 import com.BoozeBuddies.Rating.Model.viewmodels.BarRatingsCollection;
 import com.BoozeBuddies.Rating.Model.viewmodels.BeerRatingCollection;
+import com.BoozeBuddies.Rating.Model.viewmodels.UserRatings;
 
 import javax.persistence.*;
 import java.util.List;
@@ -67,6 +65,42 @@ public class RatingContextHibernate implements IRatingContext {
     }
 
     @Override
+    public UserRatings GetAllUserRatings(int userId) {
+
+        EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
+        UserRatings userRatings = null;
+
+        try
+        {
+            String hql = "SELECT c FROM BeerRatingScam c WHERE c.userId = :userId";
+            List<BeerRatingScam> beerRatings;
+            BeerRatingCollection beerRatingsCollection = new BeerRatingCollection();
+            TypedQuery<BeerRatingScam> typedQuery = entityManager.createQuery(hql, BeerRatingScam.class);
+            typedQuery.setParameter("userId", userId);
+            beerRatings = typedQuery.getResultList();
+            beerRatingsCollection.setBeerRatings(beerRatings);
+
+            String hql2 = "SELECT x FROM BarRatingScam x WHERE x.userId = :userId";
+            List<BarRatingScam> barRatings;
+            BarRatingsCollection barRatingsCollection = new BarRatingsCollection();
+            TypedQuery<BarRatingScam> typedQuery2 = entityManager.createQuery(hql2, BarRatingScam.class);
+            typedQuery2.setParameter("userId", userId);
+            barRatings = typedQuery2.getResultList();
+            barRatingsCollection.setBarRatings(barRatings);
+
+            userRatings = new UserRatings(userId, beerRatings, barRatings);
+
+        } catch (Exception ex)
+        {
+            ex.printStackTrace();
+        } finally
+        {
+            entityManager.close();
+        }
+        return userRatings;
+    }
+
+    @Override
     public Object AddBarRating(Rating rating) {
         EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
         EntityTransaction entityTransaction = null;
@@ -112,5 +146,96 @@ public class RatingContextHibernate implements IRatingContext {
             entityManager.close();
         }
         return rating;
+    }
+
+    @Override
+    public BarRatingScam EditRatingBar(BarRatingScam barRatingScam) {
+
+        EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
+        EntityTransaction entityTransaction = null;
+        try {
+            entityTransaction = entityManager.getTransaction();
+            entityTransaction.begin();
+
+            entityManager.merge(barRatingScam);
+            entityTransaction.commit();
+        }catch (Exception ex){
+            if(entityTransaction != null){
+                entityTransaction.rollback();
+            }
+            ex.printStackTrace();
+        }
+        finally {
+            entityManager.close();
+        }
+        return barRatingScam;
+    }
+
+    @Override
+    public BeerRatingScam EditRatingBeer(BeerRatingScam beerRatingScam) {
+        EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
+        EntityTransaction entityTransaction = null;
+        try {
+            entityTransaction = entityManager.getTransaction();
+            entityTransaction.begin();
+
+            entityManager.merge(beerRatingScam);
+            entityTransaction.commit();
+        }catch (Exception ex){
+            if(entityTransaction != null){
+                entityTransaction.rollback();
+            }
+            ex.printStackTrace();
+        }
+        finally {
+            entityManager.close();
+        }
+        return beerRatingScam;
+    }
+
+    @Override
+    public BarRatingScam DeleteRatingBar(BarRatingScam barRatingScam) {
+        EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
+        EntityTransaction entityTransaction = null;
+        try {
+            entityTransaction = entityManager.getTransaction();
+            entityTransaction.begin();
+
+            BarRatingScam barRatingScam1 = entityManager.find(BarRatingScam.class, barRatingScam.getId());
+            entityManager.remove(barRatingScam1);
+            entityTransaction.commit();
+        }catch (Exception ex){
+            if(entityTransaction != null){
+                entityTransaction.rollback();
+            }
+            ex.printStackTrace();
+        }
+        finally {
+            entityManager.close();
+        };
+        return barRatingScam;
+    }
+
+    @Override
+    public BeerRatingScam DeleteRatingBeer(BeerRatingScam beerRatingScam) {
+        EntityManager entityManager = ENTITY_MANAGER_FACTORY.createEntityManager();
+        EntityTransaction entityTransaction = null;
+        try {
+            entityTransaction = entityManager.getTransaction();
+            entityTransaction.begin();
+
+            BeerRatingScam beerRatingScam1 = entityManager.find(BeerRatingScam.class, beerRatingScam.getId());
+            entityManager.remove(beerRatingScam1);
+            entityTransaction.commit();
+        }catch (Exception ex){
+            if(entityTransaction != null){
+                entityTransaction.rollback();
+            }
+            ex.printStackTrace();
+        }
+        finally {
+            entityManager.close();
+        };
+        return beerRatingScam;
     }
 }

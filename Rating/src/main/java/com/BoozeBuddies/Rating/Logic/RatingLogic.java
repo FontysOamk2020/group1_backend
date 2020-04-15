@@ -5,6 +5,8 @@ import com.BoozeBuddies.Rating.Factory.RatingFactory;
 import com.BoozeBuddies.Rating.Interface.IRatingRepo;
 
 import com.BoozeBuddies.Rating.Model.Rating;
+import com.BoozeBuddies.Rating.Model.entities.BarRatingScam;
+import com.BoozeBuddies.Rating.Model.entities.BeerRatingScam;
 import org.springframework.lang.Nullable;
 
 public class RatingLogic {
@@ -22,5 +24,21 @@ public class RatingLogic {
 
     public Object AddBeerRating(Rating rating) {
         return context.AddBeerRating(rating);
+    }
+
+    public BeerRatingScam EditBeerRating(BeerRatingScam beerRatingScam) {
+        return context.EditRatingBeer(beerRatingScam);
+    }
+
+    public BarRatingScam EditBarRating(BarRatingScam barRatingScam) {
+        return context.EditRatingBar(barRatingScam);
+    }
+
+    public BeerRatingScam DeleteBeerRating(BeerRatingScam beerRatingScam) {
+        return context.DeleteRatingBeer(beerRatingScam);
+    }
+
+    public BarRatingScam DeleteBarRating(BarRatingScam barRatingScam) {
+        return context.DeleteRatingBar(barRatingScam);
     }
 }

@@ -2,6 +2,7 @@ package com.BoozeBuddies.Rating.Model.entities;
 
 import com.BoozeBuddies.Rating.Model.Rating;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 
@@ -14,11 +15,9 @@ public class BeerRatingScam {
     @Column(name = "id", unique = true, updatable = false)
     private int id;
 
-    @JsonIgnore
     @Column(name = "user_id")
     private int userId;
 
-    @JsonIgnore
     @Column(name = "beer_id")
     private int beerId;
 

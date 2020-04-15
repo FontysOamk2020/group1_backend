@@ -4,14 +4,16 @@ public class AverageRatingViewmodel {
     double average;
     int RatedObject;
     String Object;
+    int numberOfRatings;
 
     public AverageRatingViewmodel() {
     }
 
-    public AverageRatingViewmodel(double average, int ratedObject, String object) {
+    public AverageRatingViewmodel(double average, int ratedObject, String object, int numberOfRatings) {
         this.average = average;
         RatedObject = ratedObject;
         Object = object;
+        this.numberOfRatings = numberOfRatings;
     }
 
     public double getAverage() {
@@ -37,4 +39,13 @@ public class AverageRatingViewmodel {
     public void setObject(String object) {
         Object = object;
     }
+
+    public int getNumberOfRatings() {
+        return numberOfRatings;
+    }
+
+    public void setNumberOfRatings(int numberOfRatings) {
+        this.numberOfRatings = numberOfRatings;
+    }
+
 }
