@@ -25,32 +25,36 @@ public class RatingCollectionLogic {
     public AverageRatingViewmodel GetBarRatingAverage(int barId) {
         BarRatingsCollection barRatingsCollection = ratingCollectionRepo.GetBarRatingAverage(barId);
         double average = 0;
+        int rateCount = 0;
         for (BarRatingScam rating : barRatingsCollection.getBarRatings())
         {
             if(rating.getBarId() == barId)
             {
+                rateCount++;
                 average = average + rating.getRating();
             }
         }
-        average = average / barRatingsCollection.getBarRatings().size();
+        average = average / rateCount;
 
-        AverageRatingViewmodel averageRatingViewmodel = new AverageRatingViewmodel(average, barId, "Bar", barRatingsCollection.getBarRatings().size());
+        AverageRatingViewmodel averageRatingViewmodel = new AverageRatingViewmodel(average, barId, "Bar", rateCount);
         return averageRatingViewmodel;
     }
 
     public AverageRatingViewmodel GetBeerRatingAverage(int beerId) {
         BeerRatingCollection beerRatingCollection = ratingCollectionRepo.GetBeerRatingAverage(beerId);
         double average = 0;
+        int rateCount = 0;
         for (BeerRatingScam rating : beerRatingCollection.getBeerRatings())
         {
             if(rating.getBeerId() == beerId)
             {
+                rateCount++;
                 average = average + rating.getRating();
             }
         }
-        average = average / beerRatingCollection.getBeerRatings().size();
+        average = average / rateCount;
 
-        AverageRatingViewmodel averageRatingViewmodel = new AverageRatingViewmodel(average, beerId, "Beer", beerRatingCollection.getBeerRatings().size());
+        AverageRatingViewmodel averageRatingViewmodel = new AverageRatingViewmodel(average, beerId, "Beer", rateCount);
         return  averageRatingViewmodel;
     }
 
