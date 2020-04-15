@@ -1,6 +1,6 @@
-package com.BoozeBuddies.Friend.Models;
+package com.BoozeBuddies.Activity.Model.Models.Entities;
 
-import com.BoozeBuddies.Friend.Models.Enums.FriendStatus;
+import com.BoozeBuddies.Activity.Model.Models.Entities.enums.FriendStatus;
 
 import javax.persistence.*;
 import java.io.Serializable;
