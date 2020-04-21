@@ -6,6 +6,6 @@ import com.BoozeBuddies.Bar.Model.viewmodels.BarBeerModel;
 
 public interface IBarRepo {
     BarBeerModel AddBeerToBar(BarBeer barBeer);
-    Bar RateBar();
+    Bar RateBar(Bar bar);
     Bar GetById(int id);
 }
